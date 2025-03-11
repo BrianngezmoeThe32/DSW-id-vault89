@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idvault online</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-rows: auto auto auto 1fr auto;
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .top-bar {
+            background: #eee;
+            padding: 10px;
+        }
+        .navbar {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            background: white;
+            color: black;
+            padding: 10px;
+            align-items: center;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            padding: 0 20px;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar ul li {
+            padding: 0 15px;
+        }
+        .navbar ul li a {
+            color: black;
+            text-decoration: none;
+        }
+        .user-actions a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .submenu {
+            display: flex;
+            justify-content: center;
+            background: rgb(255, 18, 18);
+            padding: 10px;
+        }
+        .submenu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .banner {
+            background: url('../images/pexels-pixabay-268533.jpg') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+        }
+        
+        .info {
+            background: #f9f9f9;
+            padding: 40px 20px;
+        }
+        .info h2 {
+            margin: 0 0 10px;
+            padding: 30px;
+        }
+        .info-button {
+            background-color:#eee ;
+            color: black;
+            border-radius: 13px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 10px;
+
+        }
+        .info-button :hover {
+            background-color: rgb(255, 18, 18)  ;
+            
+        }
+        .info .subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 100px;
+        }
+        .info-grid.p{
+
+        }
+        .info-grid h3 {
+            margin-bottom: 10px;
+            color: rgb(255, 18, 18);
+        }
+        .footer {
+            background: #f8f8f8;
+            padding: 30px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+        .footer h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer ul li {
+            margin-bottom: 5px;
+        }
+        .footer ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .footer .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .footer .social-icons i {
+            font-size: 24px;
+            color: #333;
+        }
+       
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="top-bar">
+            <p>We use cookies to optimise the user experience. <a href="#">Tell me more</a> | <a href="#">Dismiss</a></p>
+        </header>
+        <nav class="navbar">
+            <div class="logo" img="" alt="logo">IdVaut   |</div>
+            <ul>
+                <li><a href="#">Police Forum</a></li>
+                <li><a href="#">Local Certifications</a></li>
+                <li><a href="#"> Home Affairs</a></li>
+                <li><a href="#">Legal Corporate</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="#">Search</a> 
+                <a href="#">Log in</a>
+            </div>
+        </nav>
+        <div class="submenu">
+            <a href="#"> Cards</a>
+            <a href="#">Insurance</a>
+            <a href="#"></a>
+            
+        </div>
+        <main class="banner">
+            <div class="banner-text">
+                <h1>The Future of Identification is Here.</h1>
+            </div>
+        </main>
+        
+        <section class="info">
+            <h2>Go Digital with IDvaul</h2>
+            <button class="info-button">Tell me more</button>
+            <p class="subtitle">Keeping you informed</p>
+
+            <div class="info-grid">
+                <div>
+                    <i class="fa-regular fa-bell"></i>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To revolutionize access to essential
+                         document certification 
+                        services in South Africa through secure,
+                         innovative, 
+                        and user-centric digital solutions, 
+                        ensuring convenience and inclusivity
+                         for all citizens.
+                    </p>
+                </div>
+                <div>
+                    <i class="fa-regular fa-lightbulb"></i>
+                    <h3>Did you know?</h3>
+                    <p>
+                        If you can lock in with our website
+                        you can get any Local Certification of choice at your time 
+                        at the different Location. still imagining that convinience ... 
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <!-- Existing content here -->
+    
+            <!-- Footer Section -->
+            <footer class="footer">
+                <div>
+                    <h3>Social</h3>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-x-twitter"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                        <i class="fab fa-blogger"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3>Useful Tools</h3>
+                    <ul>
+                        <li><a href="#">Digital Certification</a></li>
+                        <li><a href="#">rates and fees</a></li>
+                        <li><a href="#">Latest offers</a></li>
+                        <li><a href="#">Find a branch</a></li>
+                        <li><a href="#">Safety and security</a></li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h3>Who we are</h3>
+                    <ul>
+                        <li><a href="#">About Idvault</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="#">Citizenship</a></li>
+                        <li><a href="#">Arts</a></li>
+                        <li><a href="#">Media Centre</a></li>
+                        <li><a href="#">Sponsorship</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Our Sites</h3>
+                    <ul>
+                        <li><a href="#">Police Forum</a></li>
+                        <li><a href="#">Local Certifications</a></li>
+                        <li><a href="#">Home Affairs</a></li>
+                        <li><a href="#">Legal Corporate</a></li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Send your feedback</a></li>
+                    </ul>
+                </div>
+                
+            </footer>
+    </div>
+</body>
+</html>
