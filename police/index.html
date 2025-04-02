@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Police Forum</title>
+    <Link rel="stylesheet" href="index.css">
+    
+  </head>
+  <body>
+    <nav class="navbarPolice">
+      <h2>Police Forum</h2>
+      
+    </nav>
+    <main>
+      <section class = "features">
+          <div class = "heading">
+              <h4>FEATURES</h4>
+              <h1>All the services you need right at your fingertip.</h1>
+              <h3>We are all tired of going to the police station every three months.
+               With IdVaullt you get all your legal documents validation at the tip of your fingers.
+              </h3>
+          
+      </section>
+      <section class = "topFeatures">
+          <div class = "feature1">
+              <div class = "background1">
+                  <div class = "featureName"><h2>Certify Documents</h2></div>
+              </div>
+              <button class = "seeDetails">See Details</button><a href="../certify.html"></a>
+            </div>
+          <div class = "feature1">
+              <div class = "background3">
+                  <div class = "featureName"><h2>Get Affidavit</h2></div>
+              </div>
+              <button class = "seeDetails"data-href="../affidavit.html">See Details</button>
+          </div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-links">
+          <a href="#">Terms Of Use</a>
+          <span>|</span>
+          <a href="#">Idvault Regulations</a>
+          <span>|</span>
+          <a href="#">Privacy Statement</a>
+          <span>|</span>
+          <a href="#">Security Centre</a>
+        </div>
+        <p class="footer-text">
+        </p>
+        <p class="footer-text">
+          © Copyright. Idvault Limited, Registration number 2025/03/06. All rights reserved |
+          <a href="#">Authorised online Documantation Services Provider</a>
+        </p>
+        <div class="footer-border"></div>
+      </footer>
+      <script>
+        const buttons = document.querySelectorAll('.seeDetails');
+    
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const href = this.getAttribute('data-href');
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });</script>
+  </body>
+</html>
