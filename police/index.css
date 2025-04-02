@@ -9,7 +9,7 @@ body {
 .navbarPolice {
   display: flex;
   justify-content: center;
-  background: rgb(250, 82, 82);
+  background: #990033;
   padding: 5px;
   color: white;
 }
@@ -22,7 +22,7 @@ body {
 }
 .features h4 {
   font-weight: normal;
-  color: black;
+  color: #ff5733;
 }
 
 .features h3 {
@@ -75,7 +75,7 @@ body {
 .background1 {
   width: 100%;
   height: 350px;
-  background-image: url(../police/photos/background\ certify.jpg);
+  background-image: url(../police/photos/background\ certify.j);
   background-size: cover;
 }
 
@@ -109,11 +109,12 @@ body {
 .feature1 button {
   width: 99%;
   height: 50px;
-  background-color: #d00;
-  border: solid 2px #d00;
+  background-color: #990033;
+  border: solid 2px #ff5733;;
   border-top: solid 3px #d00;
   cursor: pointer;
   font-weight: bold;
+  color: white;
 }
 
 .feature1 button:hover {
