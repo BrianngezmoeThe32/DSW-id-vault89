@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Cards</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="submenu">
+      <a href="../Cards/index.html">Vitual Cards</a>
+      <a href="#">Check status</a>
+    </div>
+    <div id="card-container"></div>
+    <div class="container">
+      <div class="footer">
+        <div>
+          <h3>Social</h3>
+          <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-x-twitter"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-blogger"></i>
+          </div>
+        </div>
+        <div>
+          <h3>Useful Tools</h3>
+          <ul>
+            <li><a href="#">Digital Certification</a></li>
+            <li><a href="#">rates and fees</a></li>
+            <li><a href="#">Latest offers</a></li>
+            <li><a href="#">Find a branch</a></li>
+            <li><a href="#">Safety and security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Who we are</h3>
+          <ul>
+            <li><a href="#">About Idvault</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Citizenship</a></li>
+            <li><a href="#">Media Centre</a></li>
+            <li><a href="#">Sponsorship</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Our Sites</h3>
+          <ul>
+            <li><a href="../police/index.html">Police Forum</a></li>
+            <li><a href="../Local/index.html">Local Certifications</a></li>
+            <li><a href="#">Home Affairs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Send your feedback</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="#">Terms Of Use</a>
+        <span>|</span>
+        <a href="#">Idvault Regulations</a>
+        <span>|</span>
+        <a href="#">Privacy Statement</a>
+        <span>|</span>
+        <a href="#">Security Centre</a>
+      </div>
+      <p class="footer-text"></p>
+      <p class="footer-text">
+        © Copyright. Idvault Limited, Registration number 2025/03/06. All rights
+        reserved |
+        <a href="#">Authorised online Documantation Services Provider</a>
+      </p>
+      <div class="footer-border"></div>
+    </footer>
+
+    <script>
+      const cardContainer = document.getElementById("card-container");
+
+      const users = [
+        {
+          name: "Alice Johnson",
+          cardNumber: "1234-5678-9012-3456",
+          expiry: "12/25",
+          cvv: "123",
+        },
+        {
+          name: "Bob Smith",
+          cardNumber: "9876-5432-1098-7654",
+          expiry: "06/24",
+          cvv: "456",
+        },
+        {
+          name: "Charlie Brown",
+          cardNumber: "1111-2222-3333-4444",
+          expiry: "03/26",
+          cvv: "789",
+        },
+      ];
+
+      function createCard(user) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+        <h2>${user.name}</h2>
+        <p>Card Number: <span class="card-number">${user.cardNumber}</span></p>
+        <p>Expiry: ${user.expiry}</p>
+        <p>CVV: ${user.cvv}</p>
+    `;
+
+        return card;
+      }
+
+      users.forEach((user) => {
+        const card = createCard(user);
+        cardContainer.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
