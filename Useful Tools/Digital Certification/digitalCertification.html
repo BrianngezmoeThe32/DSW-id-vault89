@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Certification Form</title>
+    <link rel="stylesheet" href="digitalCertification.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Digital Certificate Application</h2>
+        <form id="certificateForm">
+            <label for="name" class="required-field">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email" class="required-field">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="id-number" class="required-field">ID Number</label>
+            <input type="text" id="id-number" name="id-number" required>
+
+            <label for="certificate" class="required-field">Certificate Type</label>
+            <select id="certificate" name="certificate" required>
+                <option value="">-- Select Certificate Type --</option>
+                <option value="police-clearance">Police Clearance Certificate</option>
+                <option value="birth-certificate">Birth Certificate</option>
+                <option value="marriage-certificate">Marriage Certificate</option>
+                <option value="death-certificate">Death Certificate</option>
+                <option value="educational-certificate">Educational Certificate</option>
+                <option value="residence-certificate">Proof of Residence</option>
+                <option value="tax-clearance">Tax Clearance Certificate</option>
+            </select>
+
+            <label for="date" class="required-field">Date Needed By</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+
+</body>
+</html>
