@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #000000;
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/1200px-Flag_of_South_Africa.svg.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.forms-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 184, 28, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo h1 {
+    font-size: 48px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background: linear-gradient(45deg, #FFB81C, #007749, #DE3831);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 184, 28, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 119, 73, 0.8);
+    }
+}
+
+.form-section {
+    transition: all 0.3s ease;
+}
+
+.form-section h2 {
+    text-align: center;
+    color: #FFB81C;
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFB81C;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 184, 28, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-group input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #FFB81C;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 184, 28, 0.3);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.form-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-options input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #FFB81C;
+}
+
+.forgot-password {
+    color: #FFB81C;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #007749;
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #FFB81C, #007749);
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #007749, #FFB81C);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 184, 28, 0.4);
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 25px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.switch-form a {
+    color: #FFB81C;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.switch-form a:hover {
+    color: #007749;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .forms-container {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .form-section h2 {
+        font-size: 24px;
+    }
+}
+
+.file-upload {
+    margin-bottom: 25px;
+}
+
+.file-upload label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 184, 28, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload label:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #FFB81C;
+}
+
+.file-upload label i {
+    margin-right: 10px;
+    color: #FFB81C;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.preview-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.preview-container img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 184, 28, 0.3);
+    display: block;
+    margin: 0 auto;
+}

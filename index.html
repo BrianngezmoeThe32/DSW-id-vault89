@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDVAULT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="logo">
+                <h1>IDVAULT</h1>
+            </div>
+            
+            <div class="form-section" id="signup-form">
+                <h2>Create Account</h2>
+                <form>
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" placeholder="ID Number" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-graduation-cap"></i>
+                        <input type="text" placeholder="Student Number" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="form-group file-upload">
+                        <label for="id-picture">
+                            <i class="fas fa-camera"></i>
+                            <span>Upload ID Picture</span>
+                            <input type="file" id="id-picture" accept="image/*" required>
+                        </label>
+                        <div class="preview-container" id="preview-container">
+                            <img id="preview" src="#" alt="Preview" style="display: none;">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+                <p class="switch-form">Already have an account? <a href="#" id="show-login">Login</a></p>
+            </div>
+
+           
+            <div class="form-section" id="login-form" style="display: none;">
+                <h2>Welcome Back</h2>
+                <form>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-options">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p class="switch-form">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
