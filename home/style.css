@@ -1,4 +1,4 @@
-/* Global Styles */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -8,14 +8,13 @@ body {
     text-align: center;
     background-color: #f8f8f8;
   }
-  
-  /* Top Bar */
+
   .top-bar {
     background: #eee;
     padding: 10px;
   }
   
-  /* Navbar */
+
   .navbar {
     display: grid;
     grid-template-columns: auto 1fr auto;

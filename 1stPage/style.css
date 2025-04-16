@@ -5,6 +5,7 @@ body {
   grid-template-rows: auto auto auto 1fr auto;
   grid-template-columns: 1fr;
   text-align: center;
+  background-color: #f8f8f8;
 }
 .top-bar {
   background: #eee;
@@ -60,7 +61,6 @@ body {
 }
 
 .info {
- 
   padding: 40px 20px;
 }
 .info h2 {
@@ -68,7 +68,7 @@ body {
   padding: 30px;
 }
 .info-button {
-  background-color:  rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   color: black;
   border-radius: 5px;
   padding: 10px 20px;
@@ -77,10 +77,10 @@ body {
   margin-bottom: 20px;
   padding: 10px;
   transition: background-color 0.3s ease;
-  border-color:#ff5733
+  border-color: #ff5733;
 }
 .info-button:hover {
-  background-color:rgba(211, 211, 211, 0.5);
+  background-color: rgba(211, 211, 211, 0.5);
 }
 .info .subtitle {
   font-size: 18px;
@@ -101,7 +101,7 @@ body {
   padding: 20px;
   background-size: cover;
   background-position: center;
-  background-color: rgb(255, 255, 255) ;
+  background-color: rgb(255, 255, 255);
 }
 
 .offer-section {
@@ -110,10 +110,10 @@ body {
   padding: 20px 0;
   height: 50vh;
   justify-content: center;
+  margin-bottom: 46px;
 }
-.offer-box h3{
-    
-    color : #ff3333;
+.offer-box h3 {
+  color: #ff3333;
 }
 
 .offer-box {
@@ -123,24 +123,25 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: #333;
-  padding: 50px;
+  padding: 50px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
   cursor: pointer;
   position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
-.offer-icon {
-  font-size: 2rem;
-  filter: grayscale(100%);
-  margin-bottom: 10px;
+.offer-box:hover {
+  background-color: rgba(211, 211, 211, 0.5);
+  opacity: 1;
 }
 
 .offer-box h3 {
-    margin-bottom: 10px;
-    color: rgb(255, 18, 18);
+  margin-bottom: 10px;
+  color: rgb(255, 18, 18);
 }
 
 .offer-box p,
@@ -156,12 +157,6 @@ body {
 
 .offer-box li {
   margin-bottom: 5px;
-}
-
-
-
-.offer-box:hover .offer-description {
-  display: block;
 }
 
 .offer-description {
@@ -205,6 +200,29 @@ body {
 
 .info-box-button:hover {
   background-color: #d00;
+}
+
+.info-grid h3 {
+  margin-bottom: 10px;
+  color: rgb(255, 18, 18);
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 50px 20px;
+  
+}
+
+.info-grid div {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .info-grid h3 {
@@ -285,7 +303,6 @@ body {
 .footer-text a:hover {
   text-decoration: underline;
 }
-
 
 .footer-border {
   height: 5px;

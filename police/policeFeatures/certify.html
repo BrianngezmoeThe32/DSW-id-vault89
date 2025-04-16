@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Certificate</title>
+    <link rel="stylesheet" href="certify.css" />
+  </head>
+  <body>
+    <div class="top-bar">Welcome to the Certificate Upload Page</div>
+
+    <div class="navbar">
+      <div class="logo">Idvault</div>
+      <ul>G
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+      <div class="user-actions"><a href="#">Logout</a></div>
+    </div>
+
+    <div class="submenu">
+      <a href="#">Upload Certificate</a>
+      <a href="#">My Documents</a>
+    </div>
+
+    <div class="info">
+      <h1>Upload Your Certificate</h1>
+      <p>Please select a PDF or image file to certify your document</p>
+
+      <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <input
+          type="file"
+          name="certificate"
+          accept=".pdf,.jpg,.jpeg,.png"
+          required
+        /><br /><br />
+        <button class="info-button" type="submit">Upload Certificate</button>
+      </form>
+      <p id="uploadMessage"></p>
+    </div>
+
+    <div class="footer">
+      <div>
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer">
+      <div class="footer-text">UJ Document Certification Portal</div>
+      <div class="footer-border"></div>
+    </div>
+  </body>
+</html>
