@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #ffffff;
+    color: #333333;
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.box {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    font-size: 48px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #e30613;
+}
+
+.form {
+    transition: all 0.3s ease;
+}
+
+.form h2 {
+    text-align: center;
+    color: #e30613;
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e30613;
+}
+
+.input input {
+    width: 100%;
+    padding: 12px 40px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333333;
+    transition: all 0.3s ease;
+}
+
+.input input:focus {
+    border-color: #e30613;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.1);
+}
+
+.check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.check label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #e30613;
+}
+
+.forgot {
+    color: #e30613;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #e30613;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background: #c00511;
+    transform: translateY(-2px);
+}
+
+.link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666666;
+}
+
+.link a {
+    color: #e30613;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+.upload {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333333;
+    font-size: 14px;
+}
+
+.option:hover {
+    border-color: #e30613;
+    color: #e30613;
+}
+
+.option i {
+    margin-right: 10px;
+    color: #e30613;
+}
+
+.upload input[type="file"] {
+    display: none;
+}
+
+.preview {
+    margin-top: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.preview img,
+.preview video,
+.preview canvas {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+}
+
+.camera {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+.btn-camera {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #e30613;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-camera:hover {
+    background: #c00511;
+    transform: scale(1.1);
+}
+
+#camera-capture {
+    border: none;
+    background: none;
+    font: inherit;
+}
+
+@media (max-width: 480px) {
+    .box {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .form h2 {
+        font-size: 24px;
+    }
+}
