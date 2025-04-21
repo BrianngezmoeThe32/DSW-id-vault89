@@ -2,91 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Police Forum</title>
-    <Link rel="stylesheet" href="index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
-    
+    <title>Check Status - Idvault</title>
+    <link rel="stylesheet" href="../home/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <nav class="navbarLocal">
-      <h2>Local Municipality</h2>
-      
-    </nav>
-    <main>
-      <section class = "features">
-          <div class = "heading">
-              <h4>FEATURES</h4>
-              <h1>All the services you need right at your fingertip.</h1>
-              <h3>We are all tired of going to the Municipality every three months.
-               With IdVaullt you get all your legal documents validation at the tip of your fingers.
-              </h3>
-          
+    <div class="container">
+      <!-- NAVIGATION BAR -->
+      <nav class="navbar">
+        <div class="logo">IdVaut |</div>
+        <ul>
+          <li><a href="../police/index.html">Police Forum</a></li>
+          <li><a href="../Local/index.html">Local Certifications</a></li>
+          <li><a href="../Home-Affair/index.html">Home Affairs</a></li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i><a href="#">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../logout/index.html">Log out</a>
+        </div>
+      </nav>
+
+      <!-- SUBMENU -->
+      <div class="submenu">
+        <a href="../Cards/index.html">Virtual Cards</a>
+        <a href="#">Check status</a>
+      </div>
+
+      <!-- BANNER -->
+      <main
+        class="banner"
+        style="
+          background: url('../images/dashboard-bg.jpg') no-repeat center center/cover;
+        "
+      >
+        <div class="banner-text">
+          <h1>Status Overview</h1>
+          <p>See the current progress of all your document applications.</p>
+        </div>
+      </main>
+
+      <!-- STATUS SECTION -->
+      <section class="info">
+        <h1>Your Application Status</h1>
+        <p>Here’s a summary of your applications:</p>
+
+        <div class="offer-section">
+          <!-- Police Forum -->
+          <div
+            class="offer-box"
+            style="background-image: url('../images/police.jpg')"
+          >
+            <h3>Police Forum</h3>
+            <p>Status: <strong>Approved</strong></p>
+            <p>Submitted: 05 March 2025</p>
+            <p>Reference No: PF-10239</p>
+          </div>
+
+          <!-- Local Certification -->
+          <div
+            class="offer-box"
+            style="background-image: url('../images/local.jpg')"
+          >
+            <h3>Local Certification</h3>
+            <p>Status: <strong>Pending</strong></p>
+            <p>Submitted: 12 March 2025</p>
+            <p>Reference No: LC-77854</p>
+          </div>
+
+          <!-- Home Affairs -->
+          <div
+            class="offer-box"
+            style="background-image: url('../images/homeaffairs.jpg')"
+          >
+            <h3>Home Affairs</h3>
+            <p>Status: <strong>In Review</strong></p>
+            <p>Submitted: 15 March 2025</p>
+            <p>Reference No: HA-33121</p>
+          </div>
+        </div>
       </section>
-      <section class = "topFeatures">
-          <div class = "feature1">
-              <div class = "background1">
-                  <div class = "featureName"><h2>Get Proof of Residence</h2></div>
-              </div>
-              <button class = "seeDetails">See Details</button><a href="../"></a>
-            </div>
-          
-      </section>
+
+      <!-- FOOTER -->
       <div class="container">
-            
         <div class="footer">
-            <div>
-                <h3>Social</h3>
-                <div class="social-icons">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-x-twitter"></i>
-                    <i class="fab fa-linkedin-in"></i>
-                    <i class="fab fa-blogger"></i>
-                </div>
-            </div>
           <div>
-                <h3>Useful Tools</h3>
-                <ul>
-                    <li><a href="#">Digital Certification</a></li>
-                    <li><a href="#">rates and fees</a></li>
-                    <li><a href="#">Latest offers</a></li>
-                    <li><a href="#">Find a branch</a></li>
-                    <li><a href="#">Safety and security</a></li>
-                    
-                </ul>
+            <h3>Social</h3>
+            <div class="social-icons">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-x-twitter"></i>
+              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-blogger"></i>
             </div>
-            <div>
-                <h3>Who we are</h3>
-                <ul>
-                    <li><a href="#">About Idvault</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">Citizenship</a></li>
-                    <li><a href="#">Arts</a></li>
-                    <li><a href="#">Media Centre</a></li>
-                    <li><a href="#">Sponsorship</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Our Sites</h3>
-                <ul>
-                    <li><a href="../police/index.html">Police Forum</a></li>
-                    <li><a href="../Local/index.html">Local Certifications</a></li>
-                    <li><a href="#">Home Affairs</a></li>
-                    <li><a href="../1stPage/index.html">Home</a></li>
-                    
-                </ul>
-            </div>
-            <div>
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Send your feedback</a></li>
-                </ul>
-            </div>
-            
+          </div>
+          <div>
+            <h3>Useful Tools</h3>
+            <ul>
+              <li><a href="#">Digital Certification</a></li>
+              <li><a href="#">Rates and Fees</a></li>
+              <li><a href="#">Latest Offers</a></li>
+              <li><a href="#">Find a Branch</a></li>
+              <li><a href="#">Safety and Security</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Who we are</h3>
+            <ul>
+              <li><a href="#">About Idvault</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Citizenship</a></li>
+              <li><a href="#">Media Centre</a></li>
+              <li><a href="#">Sponsorship</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Our Sites</h3>
+            <ul>
+              <li><a href="../police/index.html">Police Forum</a></li>
+              <li><a href="../Local/index.html">Local Certifications</a></li>
+              <li><a href="#">Home Affairs</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Send your Feedback</a></li>
+            </ul>
+          </div>
         </div>
       </div>
+
       <footer class="site-footer">
         <div class="footer-links">
           <a href="#">Terms Of Use</a>
@@ -98,23 +148,12 @@
           <a href="#">Security Centre</a>
         </div>
         <p class="footer-text">
-        </p>
-        <p class="footer-text">
-          © Copyright. Idvault Limited, Registration number 2025/03/06. All rights reserved |
-          <a href="#">Authorised online Documantation Services Provider</a>
+          © Copyright. Idvault Limited, Registration number 2025/03/06.
+          All rights reserved |
+          <a href="#">Authorised online Documentation Services Provider</a>
         </p>
         <div class="footer-border"></div>
       </footer>
-      <script>
-        const buttons = document.querySelectorAll('.seeDetails');
-    
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                const href = this.getAttribute('data-href');
-                if (href) {
-                    window.location.href = href;
-                }
-            });
-        });</script>
+    </div>
   </body>
 </html>
