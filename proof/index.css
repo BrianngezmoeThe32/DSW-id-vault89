@@ -6,24 +6,19 @@ body {
   grid-template-columns: 1fr;
   text-align: center;
 }
-.submenu {
+.navbarLocal {
   display: flex;
   justify-content: center;
-  background: rgb(255, 18, 18);
-  padding: 10px;
-}
-.submenu a {
+  background: #990033;
+  padding: 5px;
   color: white;
-  text-decoration: none;
-  margin: 0 15px;
 }
 .features {
   width: 80%;
   margin: 40px auto;
-  display: flex; 
+  display: flex;
   padding: 20px;
   justify-content: center;
-  
 }
 .features h4 {
   font-weight: normal;
@@ -40,7 +35,6 @@ body {
   font-weight: 500;
   margin: 0px auto;
 }
-
 
 .topFeatures {
   width: 80%;
@@ -79,15 +73,7 @@ body {
 .background1 {
   width: 100%;
   height: 350px;
-  background-image: url(../police/photos/background\ certify.jpg);
-  background-size: cover;
-}
-
-
-.background3 {
-  width: 100%;
-  height: 350px;
-  background-image: url(../police/photos/affidavit.jpg);
+  background-image: url(../police/photos/proof.jpg);
   background-size: cover;
 }
 
@@ -114,7 +100,7 @@ body {
   width: 99%;
   height: 50px;
   background-color: #990033;
-  border: solid 2px #ff5733;;
+  border: solid 2px #ff5733;
   border-top: solid 3px #d00;
   cursor: pointer;
   font-weight: bold;
@@ -171,7 +157,7 @@ body {
 }
 
 .footer-links a {
-  color: #ff5733; /* Bright red/orange for links */
+  color: #ff5733;
   text-decoration: none;
   margin: 0 5px;
 }
@@ -181,7 +167,7 @@ body {
 }
 
 .footer-links span {
-  color: #999; /* Divider color */
+  color: #999;
 }
 
 .footer-text {
@@ -199,7 +185,6 @@ body {
   text-decoration: underline;
 }
 
-
 .footer-border {
   height: 5px;
   background: linear-gradient(
@@ -214,4 +199,3 @@ body {
   margin-top: 10px;
   border-radius: 5px;
 }
-
