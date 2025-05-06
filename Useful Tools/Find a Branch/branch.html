@@ -5,25 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Branch</title>
     <link rel="stylesheet" href="branch.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <div class="form-container">
         <h2>Find a Branch</h2>
+        <div id="map"></div>
         <form id="branch-form">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Enter City" required>
+            <div class="branch-selector">
+                <label for="campus">Select Campus</label>
+                <select id="campus" name="campus" required>
+                    <option value="">Select a campus</option>
+                    <option value="APB">Auckland Park Bunting Road Campus (APB)</option>
+                    <option value="APK">Auckland Park Kingsway Campus (APK)</option>
+                    <option value="SWC">Soweto Campus (SWC)</option>
+                    <option value="DFC">Doornfontein Campus (DFC)</option>
+                </select>
+            </div>
 
-            <label for="postal-code">Postal Code</label>
-            <input type="text" id="postal-code" name="postal-code" placeholder="Enter Postal Code" pattern="[0-9]{5}" required>
-
-            <label for="branch-name">Branch Name (optional)</label>
-            <input type="text" id="branch-name" name="branch-name" placeholder="Enter Branch Name">
-
-            <button type="submit">Search</button>
+            <div id="selected-branch-info"></div>
+            <button type="submit">Get Directions</button>
         </form>
-
-        <div id="results"></div>
     </div>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="branch.js"></script>
 </body>
 </html>
