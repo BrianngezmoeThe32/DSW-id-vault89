@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IdVault - Login</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" /> <!-- styles is a log in css page-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login">
+      <div class="outer">
+        <div class="switchDisplay">
+          <img src="logo.png" alt="IdVault Logo" class="logo" />
+          <p class="primaryText" id="Welcometxt">Hi! Welcome Back</p>
+          <p class="thirdText" id="welcomebodytxt">
+            If you don't have an existing account please sign Up.
+          </p>
+          <button class="SwitchLoginIn">Sign Up</button>
+
+          <!-- Admin Login Toggle -->
+          <div class="admin-toggle">
+            <input type="checkbox" id="adminLoginCheck" />
+            <label for="adminLoginCheck">Admin Login</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- Sign In Form -->
+        <div class="signIn">
+          <p class="primaryText">Log In</p>
+          <p class="statusCheck">Incorrect Username or Password.</p>
+          <input type="email" placeholder="Email Address" id="signInUser" />
+          <form class="loginPass">
+            <input type="password" placeholder="Password" id="signInPass" />
+          </form>
+          <button class="SignInbtn">Log In</button>
+        </div>
+
+        <form
+          action="../auth/register.php"
+          method="POST"
+          enctype="multipart/form-data"
+          style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div class="signUp">
+            <p class="primaryText">Sign Up</p>
+            <p id="passwordstat">Password status</p>
+            <input type="text" placeholder="Full Name" id="FullName" />
+            <input type="email" placeholder="E-mail Address" id="email" />
+            <input type="text" placeholder="Phone Number" id="phonenumber" />
+            <form class="passContainer">
+              <input type="password" placeholder="Password" id="pass1" />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                id="pass2"
+              />
+            </form>
+            <input type="checkbox" id="terms" />
+            <label for="terms">I agree to the terms and conditions</label>
+            <button class="Submit">Submit</button>
+          </div>
+        </form>
+
+        <p id="altSignIntext">Or login with</p>
+        <ul class="altSignIn">
+          <li>
+            <a><i class="bx bxl-google"></i></a>
+          </li>
+          <li>
+            <a><i class="bx bxl-facebook"></i></a>
+          </li>
+          <li>
+            <a><i class="bx bxl-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="confirmation">
+      <i class="bx bxs-check-circle"></i>
+      <p id="confirmationMsg">You Have Created Your Account</p>
+    </div>
+
+    <script src="../auth/auth.js"></script>
+  </body>
+</html>

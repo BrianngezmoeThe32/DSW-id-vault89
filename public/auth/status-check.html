@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idvault Online - Application Status</title>
+    <link rel="stylesheet" href="../home/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* Additional CSS for Status Page (add to style.css) */
+      .status-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .status-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .application-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 4px solid #ff1212;
+      }
+
+      .application-card.approved {
+        border-left-color: #28a745;
+      }
+
+      .application-card.pending {
+        border-left-color: #ffc107;
+      }
+
+      .application-card.review {
+        border-left-color: #17a2b8;
+      }
+
+      .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .app-title {
+        font-size: 1.2rem;
+        color: #333;
+        margin: 0;
+      }
+
+      .app-type {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        background: #f0f0f0;
+      }
+
+      .app-type.police {
+        background: #e6f7ff;
+        color: #0056b3;
+      }
+
+      .app-type.local {
+        background: #e6f7ee;
+        color: #28a745;
+      }
+
+      .app-type.home {
+        background: #f8f0ff;
+        color: #6f42c1;
+      }
+
+      .app-status {
+        font-weight: bold;
+      }
+
+      .status-pending {
+        color: #ffc107;
+      }
+
+      .status-review {
+        color: #17a2b8;
+      }
+
+      .status-approved {
+        color: #28a745;
+      }
+
+      .status-rejected {
+        color: #dc3545;
+      }
+
+      .app-details {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 15px;
+      }
+
+      .app-meta {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .app-meta strong {
+        color: #333;
+      }
+
+      .status-timeline {
+        margin-top: 20px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        border: 2px solid white;
+      }
+
+      .timeline-item.completed::before {
+        background: #28a745;
+      }
+
+      .timeline-item.current::before {
+        background: #ff1212;
+        animation: pulse 2s infinite;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: -15px;
+        top: 17px;
+        bottom: -5px;
+        width: 2px;
+        background: #eee;
+      }
+
+      .timeline-item:last-child::after {
+        display: none;
+      }
+
+      .timeline-date {
+        font-size: 0.8rem;
+        color: #999;
+      }
+
+      .timeline-content {
+        font-size: 0.9rem;
+      }
+
+      .app-actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .action-btn {
+        padding: 8px 15px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .download-btn {
+        background: #ff1212;
+        color: white;
+        border: none;
+      }
+
+      .contact-btn {
+        background: white;
+        color: #333;
+        border: 1px solid #ddd;
+      }
+
+      .upload-btn {
+        background: #17a2b8;
+        color: white;
+        border: none;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 18, 18, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 18, 18, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 18, 18, 0);
+        }
+      }
+
+      .no-applications {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut |</div>
+        <ul>
+          <li><a href="../police/index.html">Police Forum</a></li>
+          <li><a href="../proof/index.html">Local Certifications</a></li>
+          <li><a href="../Home-Affair/index.html">Home Affairs</a></li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../search/index.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../1stPage/index.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="status-check.html" class="active">Check Status</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Application Status</h1>
+          <p>Track the progress of your document applications</p>
+        </div>
+      </main>
+
+      <section class="status-container">
+        <div class="status-header">
+          <h2>Your Document Applications</h2>
+          <p>
+            Below are all your submitted applications and their current status
+          </p>
+        </div>
+
+        <!-- Approved Application Example -->
+        <div class="application-card approved">
+          <div class="app-header">
+            <h3 class="app-title">Affidavit Certificate</h3>
+            <span class="app-type police">Police Forum</span>
+          </div>
+
+          <div class="app-details">
+            <div class="app-meta">
+              <strong>Reference:</strong> PF-2024-00158
+            </div>
+            <div class="app-meta"><strong>Submitted:</strong> 15 Jan 2024</div>
+            <div class="app-meta">
+              <strong>Status:</strong>
+              <span class="app-status status-approved">Approved</span>
+            </div>
+          </div>
+
+          <div class="status-timeline">
+            <div class="timeline-item completed">
+              <div class="timeline-date">15 Jan 2024</div>
+              <div class="timeline-content">Application submitted</div>
+            </div>
+            <div class="timeline-item completed">
+              <div class="timeline-date">16 Jan 2024</div>
+              <div class="timeline-content">Application under review</div>
+            </div>
+            <div class="timeline-item completed">
+              <div class="timeline-date">18 Jan 2024</div>
+              <div class="timeline-content">Application approved by admin</div>
+            </div>
+            <div class="timeline-item completed">
+              <div class="timeline-date">18 Jan 2024</div>
+              <div class="timeline-content">Document generated and ready</div>
+            </div>
+          </div>
+
+          <div class="app-actions">
+            <button class="action-btn download-btn">
+              <i class="fas fa-download"></i> Download Document
+            </button>
+            <button class="action-btn contact-btn">
+              <i class="fas fa-print"></i> Print Copy
+            </button>
+          </div>
+        </div>
+
+        <!-- Under Review Application Example -->
+        <div class="application-card review">
+          <div class="app-header">
+            <h3 class="app-title">Proof of Address</h3>
+            <span class="app-type local">Local Certification</span>
+          </div>
+
+          <div class="app-details">
+            <div class="app-meta">
+              <strong>Reference:</strong> LC-2024-00234
+            </div>
+            <div class="app-meta"><strong>Submitted:</strong> 20 Jan 2024</div>
+            <div class="app-meta">
+              <strong>Status:</strong>
+              <span class="app-status status-review">Under Review</span>
+            </div>
+          </div>
+
+          <div class="status-timeline">
+            <div class="timeline-item completed">
+              <div class="timeline-date">20 Jan 2024</div>
+              <div class="timeline-content">Application submitted</div>
+            </div>
+            <div class="timeline-item current">
+              <div class="timeline-date">21 Jan 2024</div>
+              <div class="timeline-content">Application under review</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Pending</div>
+              <div class="timeline-content">Application approval</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Pending</div>
+              <div class="timeline-content">Document generation</div>
+            </div>
+          </div>
+
+          <div class="app-message">
+            <p>
+              <i class="fas fa-info-circle" style="color: #17a2b8"></i> Your
+              application is being processed. Expected completion: 25 Jan 2024
+            </p>
+          </div>
+        </div>
+
+        <!-- Pending Application Example -->
+        <div class="application-card pending">
+          <div class="app-header">
+            <h3 class="app-title">Passport Application</h3>
+            <span class="app-type home">Home Affairs</span>
+          </div>
+
+          <div class="app-details">
+            <div class="app-meta">
+              <strong>Reference:</strong> HA-2024-00397
+            </div>
+            <div class="app-meta"><strong>Submitted:</strong> 22 Jan 2024</div>
+            <div class="app-meta">
+              <strong>Status:</strong>
+              <span class="app-status status-pending">Pending Submission</span>
+            </div>
+          </div>
+
+          <div class="status-timeline">
+            <div class="timeline-item current">
+              <div class="timeline-date">22 Jan 2024</div>
+              <div class="timeline-content">Draft application saved</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Pending</div>
+              <div class="timeline-content">Application submission</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Pending</div>
+              <div class="timeline-content">Review process</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Pending</div>
+              <div class="timeline-content">Final approval</div>
+            </div>
+          </div>
+
+          <div class="app-actions">
+            <button class="action-btn download-btn">
+              <i class="fas fa-edit"></i> Complete Application
+            </button>
+            <button class="action-btn contact-btn">
+              <i class="fas fa-question-circle"></i> Need Help?
+            </button>
+          </div>
+        </div>
+
+        <!-- Rejected Application Example -->
+        <div class="application-card">
+          <div class="app-header">
+            <h3 class="app-title">Study Permit</h3>
+            <span class="app-type home">Home Affairs</span>
+          </div>
+
+          <div class="app-details">
+            <div class="app-meta">
+              <strong>Reference:</strong> HA-2023-01142
+            </div>
+            <div class="app-meta"><strong>Submitted:</strong> 5 Dec 2023</div>
+            <div class="app-meta">
+              <strong>Status:</strong>
+              <span class="app-status status-rejected">Rejected</span>
+            </div>
+          </div>
+
+          <div class="status-timeline">
+            <div class="timeline-item completed">
+              <div class="timeline-date">5 Dec 2023</div>
+              <div class="timeline-content">Application submitted</div>
+            </div>
+            <div class="timeline-item completed">
+              <div class="timeline-date">10 Dec 2023</div>
+              <div class="timeline-content">Application under review</div>
+            </div>
+            <div class="timeline-item completed">
+              <div class="timeline-date">15 Dec 2023</div>
+              <div class="timeline-content">Application rejected</div>
+            </div>
+          </div>
+
+          <div class="app-message" style="color: #dc3545">
+            <p>
+              <i class="fas fa-exclamation-triangle"></i>
+              <strong>Rejection Reason:</strong> Missing required documents
+              (Proof of admission from educational institution not provided).
+              Please resubmit with complete documentation.
+            </p>
+          </div>
+
+          <div class="app-actions">
+            <button class="action-btn download-btn">
+              <i class="fas fa-redo"></i> Resubmit Application
+            </button>
+            <button class="action-btn contact-btn">
+              <i class="fas fa-headset"></i> Contact Support
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer (same as home page) -->
+      <div class="container">
+        <div class="footer">
+          <div>
+            <h3>Social</h3>
+            <div class="social-icons">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-x-twitter"></i>
+              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-blogger"></i>
+            </div>
+          </div>
+          <div>
+            <h3>Useful Tools</h3>
+            <ul>
+              <li><a href="#">Digital Certification</a></li>
+              <li><a href="#">Rates and Fees</a></li>
+              <li><a href="#">Latest Offers</a></li>
+              <li><a href="#">Find a Branch</a></li>
+              <li><a href="#">Safety and Security</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Who we are</h3>
+            <ul>
+              <li><a href="#">About Idvault</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Citizenship</a></li>
+              <li><a href="#">Media Centre</a></li>
+              <li><a href="#">Sponsorship</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Our Sites</h3>
+            <ul>
+              <li><a href="../police/index.html">Police Forum</a></li>
+              <li><a href="../proof/index.html">Local Certifications</a></li>
+              <li><a href="../Home-Affair/index.html">Home Affairs</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="../contactUs/contactus.html">Contact Us</a></li>
+              <li><a href="../feedback/index.html">Send your Feedback</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-links">
+          <a href="../1stPage/terms/index.html">Terms Of Use</a>
+          <span>|</span>
+          <a href="#">Idvault Regulations</a>
+          <span>|</span>
+          <a href="#">Privacy Statement</a>
+          <span>|</span>
+          <a href="#">Security Centre</a>
+        </div>
+        <p class="footer-text"></p>
+        <p class="footer-text">
+          © Copyright. Idvault Limited, Registration number 2025/03/06. All
+          rights reserved |
+          <a href="#">Authorised online Documentation Services Provider</a>
+        </p>
+        <div class="footer-border"></div>
+      </footer>
+    </div>
+
+    <script>
+      // Simulate clicking the download button
+      document.querySelectorAll(".download-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const appTitle =
+            this.closest(".application-card").querySelector(
+              ".app-title"
+            ).textContent;
+          alert(
+            `Downloading document for: ${appTitle}\n\nThis would trigger a PDF download in a real implementation.`
+          );
+        });
+      });
+
+      // Simulate clicking the contact button
+      document.querySelectorAll(".contact-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          alert("Redirecting to support contact page...");
+        });
+      });
+    </script>
+  </body>
+</html>
