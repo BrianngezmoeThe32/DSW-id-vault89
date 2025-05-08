@@ -8,7 +8,7 @@ $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
 try {
     $db = Database::getConnection();
     
-    // Check if user exists and isn't already verified
+    
     $stmt = $db->prepare("SELECT user_id, verification_token FROM users WHERE email = ? AND is_verified = 0");
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -21,9 +21,8 @@ try {
         exit;
     }
 
-    // In a real application, you would send an email here
-    // For this example, we'll just return a success message
-    $verificationLink = "https://yourdomain.com/verify_email.php?token=" . $user['verification_token'];
+    
+    $verificationLink = "https://bngezmoe@gmail.com/verify_email.php?token=" . $user['verification_token'];
     
     // This would be the actual email sending code in production:
     /*

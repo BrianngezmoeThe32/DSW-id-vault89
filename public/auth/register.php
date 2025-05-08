@@ -1,11 +1,12 @@
 <?php
+require('login.html');
 header('Content-Type: application/json');
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/encryption.php';
+require_once __DIR__ . '/../config/encryption.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Validate input
+
 $required = ['name', 'email', 'phone', 'password'];
 foreach ($required as $field) {
     if (empty($input[$field])) {
@@ -20,7 +21,7 @@ $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
 $phone = filter_var($input['phone'], FILTER_SANITIZE_STRING);
 $password = $input['password'];
 
-// Additional validation
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Invalid email format']);
@@ -36,7 +37,7 @@ if (strlen($password) < 8) {
 try {
     $db = Database::getConnection();
     
-    // Check if email already exists
+    
     $stmt = $db->prepare("SELECT user_id FROM users WHERE email = ?");
     $stmt->execute([$email]);
     
@@ -46,14 +47,14 @@ try {
         exit;
     }
     
-    // Hash password with unique salt
+    
     $salt = bin2hex(random_bytes(16));
     $passwordHash = hashPassword($password, $salt);
     
-    // Create verification token
+    
     $verificationToken = bin2hex(random_bytes(32));
     
-    // Insert new user
+    
     $stmt = $db->prepare("INSERT INTO users (full_name, email, phone, password_hash, salt, verification_token) 
                          VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->execute([$name, $email, $phone, $passwordHash, $salt, $verificationToken]);

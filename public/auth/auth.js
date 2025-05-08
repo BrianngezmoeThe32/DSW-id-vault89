@@ -142,6 +142,9 @@ function SignUp() {
         if (data.status === "success") {
           // Hide the login/signup forms
           loginPage.style.display = "none";
+          window.location.href = "../home.html";
+          
+
 
           // Create confirmation message with verification link
           const confirmationMsg = document.getElementById("confirmationMsg");
