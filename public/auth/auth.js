@@ -18,6 +18,7 @@ const welcomebodytxt = document.querySelector("#welcomebodytxt");
 
 // Admin mode elements
 const adminToggle = document.getElementById("adminLoginCheck");
+const registerBtn = document.getElementById("registerBtn"); // Added missing reference
 
 class UserData {
   #_name;
@@ -58,7 +59,7 @@ btnSwitchLogIn.addEventListener("click", function () {
 
     // Reset admin toggle when switching back to login
     adminToggle.checked = false;
-    loginForm.classList.remove("admin-mode");
+    signIn.classList.remove("admin-mode");
     document.getElementById("signInUser").placeholder = "Email Address";
   }
 });
@@ -100,132 +101,78 @@ pass1.addEventListener("input", function () {
   passStat.style.display = "flex";
 });
 
-// Sign up function
-// ... (keep all your existing code above until the SignUp function)
+// Enhanced registration handler
+registerBtn.addEventListener("click", async function () {
+  // Validate inputs first
+  const name = document.getElementById("FullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phonenumber").value.trim();
+  const password = pass1.value;
+  const confirmPassword = pass2.value;
 
-// Modified SignUp function with confirmation flow
-function SignUp() {
-  const name = document.querySelector("#FullName").value.trim();
-  const email = document.querySelector("#email").value.trim();
-  const phone = document.querySelector("#phonenumber").value.trim();
-  const password1 = pass1.value.trim();
-  const password2 = pass2.value.trim();
+  // Basic validation
+  if (!name || !email || !phone || !password || !confirmPassword) {
+    alert("Please fill all fields");
+    return;
+  }
 
-  if (name && email && phone && password1 && password2) {
-    if (password1 !== password2) {
-      passStat.textContent = "Passwords do not match.";
-      passStat.style.display = "flex";
-      return;
-    }
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
 
-    if (checkPasswordStrength(password1) < 2) {
-      passStat.textContent =
-        "Password is too weak. Please use a stronger password.";
-      passStat.style.display = "flex";
-      return;
-    }
+  if (!document.getElementById("terms").checked) {
+    alert("Please accept terms and conditions");
+    return;
+  }
 
-    fetch("signup.php", {
+  // Prepare JSON data
+  const userData = {
+    name: name,
+    email: email,
+    phone: phone,
+    password: password
+  };
+
+  try {
+    // Show loading state
+    registerBtn.disabled = true;
+    registerBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Processing...';
+
+    const response = await fetch("../auth/register.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        fullname: name,
-        email: email,
-        phone: phone,
-        password: password1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          // Hide the login/signup forms
-          loginPage.style.display = "none";
-          window.location.href = "../home.html";
-          
-
-
-          // Create confirmation message with verification link
-          const confirmationMsg = document.getElementById("confirmationMsg");
-          confirmationMsg.innerHTML = `
-            <h3>Account Registration Successful!</h3>
-            <p>We've sent a confirmation email to ${email}. Please verify your email to continue.</p>
-            <div class="verification-steps">
-              <p><strong>Next Steps:</strong></p>
-              <ol>
-                <li>Check your email for the verification link</li>
-                <li>Click the link to verify your account</li>
-                <li>Complete your identity verification</li>
-              </ol>
-              <div class="resend-link">
-                Didn't receive the email? <a href="#" id="resendEmail">Resend verification email</a>
-              </div>
-            </div>
-          `;
-
-          // Show the confirmation page
-          confirmationPage.style.display = "flex";
-
-          // Add resend email functionality
-          document
-            .getElementById("resendEmail")
-            .addEventListener("click", function (e) {
-              e.preventDefault();
-              resendVerificationEmail(email);
-            });
-
-          // For demo purposes, we'll simulate email verification
-          // In production, remove this and use real email verification
-          setTimeout(() => {
-            simulateEmailVerification(data.userId);
-          }, 3000);
-        } else {
-          passStat.textContent = data.message || "Signup failed.";
-          passStat.style.display = "flex";
-        }
-      })
-      .catch((err) => {
-        passStat.textContent = "Something went wrong. Try again later.";
-        console.error(err);
-      });
-  } else {
-    passStat.textContent = "Please fill in all the fields.";
-    passStat.style.display = "flex";
-  }
-}
-
-// Function to resend verification email
-function resendVerificationEmail(email) {
-  fetch("resend_verification.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: email,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        alert("Verification email resent successfully!");
-      } else {
-        alert(
-          "Failed to resend verification email: " +
-            (data.message || "Unknown error")
-        );
-      }
-    })
-    .catch((error) => {
-      console.error("Error resending verification email:", error);
-      alert("Failed to resend verification email. Please try again later.");
+      body: JSON.stringify(userData)
     });
-}
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
+
+    // Success case
+    document.getElementById("confirmationMsg").textContent = data.message || "Registration successful!";
+    document.querySelector(".confirmation").style.display = "flex";
+    
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 2000);
+
+  } catch (error) {
+    console.error("Registration error:", error);
+    alert(`Registration failed: ${error.message}`);
+  } finally {
+    // Reset button state
+    registerBtn.disabled = false;
+    registerBtn.textContent = "Submit";
+  }
+});
 
 // Function to simulate email verification (for demo only)
 function simulateEmailVerification(userId) {
-  // In a real app, this would happen when user clicks the email link
   fetch("verify_email.php", {
     method: "POST",
     headers: {
@@ -233,47 +180,39 @@ function simulateEmailVerification(userId) {
     },
     body: JSON.stringify({
       userId: userId,
-      token: "simulated_token", // In real app, this would come from the email link
+      token: "simulated_token",
     }),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        // Update the confirmation message to show verification success
-        const confirmationMsg = document.getElementById("confirmationMsg");
-        confirmationMsg.innerHTML = `
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    const confirmationMsg = document.getElementById("confirmationMsg");
+    if (data.status === "success") {
+      confirmationMsg.innerHTML = `
         <h3>Email Verified Successfully!</h3>
-        <p>Your email has been verified. Please complete your identity verification to finish setting up your account.</p>
-        <div class="verification-steps">
-          <p><strong>Required Documents:</strong></p>
-          <ul>
-            <li>Government-issued ID (Passport, Driver's License, etc.)</li>
-            <li>Student Registration Proof</li>
-            <li>Proof of Address (Utility bill, Bank statement, etc.)</li>
-          </ul>
-          <div class="document-upload">
-            <a href="verify_identity.html?userId=${userId}" class="btn-verify">
-              Proceed to Identity Verification
-            </a>
-          </div>
-        </div>
+        <p>Your email has been verified.</p>
+        <a href="verify_identity.html?userId=${userId}" class="btn-verify">
+          Proceed to Identity Verification
+        </a>
       `;
-      } else {
-        confirmationMsg.innerHTML += `
+    } else {
+      confirmationMsg.innerHTML += `
         <div class="error-message">
           Verification failed: ${data.message || "Unknown error"}
         </div>
       `;
-      }
-    })
-    .catch((error) => {
-      console.error("Verification error:", error);
-      confirmationMsg.innerHTML += `
+    }
+  })
+  .catch(error => {
+    console.error("Verification error:", error);
+    document.getElementById("confirmationMsg").innerHTML += `
       <div class="error-message">
-        Error during verification. Please try again later.
+        Error during verification: ${error.message}
       </div>
     `;
-    });
+  });
 }
-
-// ... (keep all your existing code below)

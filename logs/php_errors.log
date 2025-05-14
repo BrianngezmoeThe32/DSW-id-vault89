@@ -1,0 +1,73 @@
+[14-May-2025 21:21:00 Europe/Berlin] [DEBUG] Raw input received: 
+[14-May-2025 21:21:00 Europe/Berlin] [ERROR] Empty input received
+[14-May-2025 21:25:22 Europe/Berlin] [DEBUG] Raw input received: 
+[14-May-2025 21:25:22 Europe/Berlin] [ERROR] Empty input received
+[14-May-2025 21:25:36 Europe/Berlin] [DEBUG] Raw input received: 
+[14-May-2025 21:25:36 Europe/Berlin] [ERROR] Empty input received
+[14-May-2025 21:33:58 Europe/Berlin] [DEBUG] Raw input received: 
+[14-May-2025 21:33:58 Europe/Berlin] [ERROR] Empty input received
+[14-May-2025 21:35:53 Europe/Berlin] [DEBUG] Raw input received: {"name":"ywiuewues","email":"hbiceisu@gmail.com","phone":"8934984398","password":"8934984398hbiceisu@gmail.com"}
+[14-May-2025 21:35:53 Europe/Berlin] [DEBUG] Decoded input: Array
+(
+    [name] => ywiuewues
+    [email] => hbiceisu@gmail.com
+    [phone] => 8934984398
+    [password] => 8934984398hbiceisu@gmail.com
+)
+
+[14-May-2025 21:35:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 84
+[14-May-2025 21:35:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
+[14-May-2025 21:35:53 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
+[14-May-2025 21:35:53 Europe/Berlin] [GENERAL ERROR] Database connection error
+[14-May-2025 21:36:03 Europe/Berlin] [DEBUG] Raw input received: {"name":"ywiuewues","email":"hbiceisu@gmail.com","phone":"8934984398","password":"8934984398hbiceisu@gmail.com"}
+[14-May-2025 21:36:03 Europe/Berlin] [DEBUG] Decoded input: Array
+(
+    [name] => ywiuewues
+    [email] => hbiceisu@gmail.com
+    [phone] => 8934984398
+    [password] => 8934984398hbiceisu@gmail.com
+)
+
+[14-May-2025 21:36:03 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 84
+[14-May-2025 21:36:03 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
+[14-May-2025 21:36:03 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
+[14-May-2025 21:36:03 Europe/Berlin] [GENERAL ERROR] Database connection error
+[14-May-2025 21:59:08 Europe/Berlin] [DEBUG] Raw input received: {"name":"ywiuewues","email":"hbiceisu@gmail.com","phone":"8934984398","password":"8934984398hbiceisu@gmail.com"}
+[14-May-2025 21:59:08 Europe/Berlin] [DEBUG] Decoded input: Array
+(
+    [name] => ywiuewues
+    [email] => hbiceisu@gmail.com
+    [phone] => 8934984398
+    [password] => 8934984398hbiceisu@gmail.com
+)
+
+[14-May-2025 21:59:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 84
+[14-May-2025 21:59:08 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
+[14-May-2025 21:59:08 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
+[14-May-2025 21:59:08 Europe/Berlin] [GENERAL ERROR] Database connection error
+[15-May-2025 00:10:28 Europe/Berlin] [DEBUG] Raw input received: {"name":"ywiuewues","email":"hbiceisu@gmail.com","phone":"8934984398","password":"8934984398hbiceisu@gmail.com"}
+[15-May-2025 00:10:28 Europe/Berlin] [DEBUG] Decoded input: Array
+(
+    [name] => ywiuewues
+    [email] => hbiceisu@gmail.com
+    [phone] => 8934984398
+    [password] => 8934984398hbiceisu@gmail.com
+)
+
+[15-May-2025 00:10:28 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 84
+[15-May-2025 00:10:28 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
+[15-May-2025 00:10:28 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
+[15-May-2025 00:10:28 Europe/Berlin] [GENERAL ERROR] Database connection error
+[15-May-2025 00:11:15 Europe/Berlin] [DEBUG] Raw input received: {"name":"ywiuewues","email":"hbiceisu@gmail.com","phone":"8934984398","password":"8934984398hbiceisu@gmail.com"}
+[15-May-2025 00:11:15 Europe/Berlin] [DEBUG] Decoded input: Array
+(
+    [name] => ywiuewues
+    [email] => hbiceisu@gmail.com
+    [phone] => 8934984398
+    [password] => 8934984398hbiceisu@gmail.com
+)
+
+[15-May-2025 00:11:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 84
+[15-May-2025 00:11:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
+[15-May-2025 00:11:15 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
+[15-May-2025 00:11:15 Europe/Berlin] [GENERAL ERROR] Database connection error

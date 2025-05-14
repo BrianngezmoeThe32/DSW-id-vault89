@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IdVault - Login</title>
-    <link rel="stylesheet" href="../assets/css/styles.css" /> <!-- styles is a log in css page-->
+    <link rel="stylesheet" href="../assets/css/styles.css" /> 
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -22,7 +22,7 @@
           </p>
           <button class="SwitchLoginIn">Sign Up</button>
 
-          <!-- Admin Login Toggle -->
+          <!-- Admin Login page -->
           <div class="admin-toggle">
             <input type="checkbox" id="adminLoginCheck" />
             <label for="adminLoginCheck">Admin Login</label>
@@ -53,25 +53,20 @@
             align-items: center;
           "
         >
-          <div class="signUp">
-            <p class="primaryText">Sign Up</p>
-            <p id="passwordstat">Password status</p>
-            <input type="text" placeholder="Full Name" id="FullName" />
-            <input type="email" placeholder="E-mail Address" id="email" />
-            <input type="text" placeholder="Phone Number" id="phonenumber" />
-            <div class="passContainer">
-              <input type="password" placeholder="Password" id="pass1" />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                id="pass2"
-              />
-            </div>
-          
-            <input type="checkbox" id="terms" />
-            <label for="terms">I agree to the terms and conditions</label>
-            <button class="Submit">Submit</button>
+        <div class="signUp">
+          <p class="primaryText">Sign Up</p>
+          <p id="passwordstat">Password status</p>
+          <input type="text" placeholder="Full Name" id="FullName" name="name">
+          <input type="email" placeholder="E-mail Address" id="email" name="email">
+          <input type="text" placeholder="Phone Number" id="phonenumber" name="phone">
+          <div class="passContainer">
+            <input type="password" placeholder="Password" id="pass1" name="password">
+            <input type="password" placeholder="Confirm Password" id="pass2">
           </div>
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the terms and conditions</label>
+          <button type="button" class="Submit" id="registerBtn">Submit</button>
+        </div>
         </form>
 
         <p id="altSignIntext">Or login with</p>
