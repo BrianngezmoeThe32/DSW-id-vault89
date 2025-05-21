@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application History | Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut | Admin</div>
+        <ul>
+          <li><a href="police-requests.html">Police Forum Requests</a></li>
+          <li>
+            <a href="local-certification-requests.html">Local Certifications</a>
+          </li>
+          <li><a href="home-affairs-requests.html">Home Affairs</a></li>
+          <li>
+            <a href="../public/auth/approval-history.html" class="active"
+              >Approval History</a
+            >
+          </li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../public/search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../public/FirstPage.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="dashboard.html">Dashboard Overview</a>
+        <a href="user-management.html">User Management</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Application History</h1>
+          <p>View all application requests and their status history.</p>
+        </div>
+      </main>
+
+      <section class="admin-requests">
+        <div class="requests-filter">
+          <button class="filter-btn active">All Applications</button>
+          <button class="filter-btn">Police Forum</button>
+          <button class="filter-btn">Local Certifications</button>
+          <button class="filter-btn">Home Affairs</button>
+          <button class="filter-btn">Last 30 Days</button>
+        </div>
+
+        <div class="requests-list">
+          <!-- Example entries showing all types of applications -->
+          <div class="request-card">
+            <div class="request-header">
+              <span class="request-type police">Police Forum</span>
+              <span class="request-date"
+                >Submitted: 15 Jan 2024 | Approved: 17 Jan 2024</span
+              >
+            </div>
+            <div class="request-details">
+              <h3>Affidavit Certificate Request</h3>
+              <p><strong>User:</strong> Mtswene (Mtswene@example.com)</p>
+              <p><strong>Admin:</strong> Admin User (admin@idvault.com)</p>
+              <div class="request-files">
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-pdf"></i> Supporting_Document.pdf</a
+                >
+              </div>
+            </div>
+            <div class="request-status approved">
+              <span>Status: Approved</span>
+            </div>
+            <div class="request-actions">
+              <button class="action-btn view">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="request-header">
+              <span class="request-type local">Local Certifications</span>
+              <span class="request-date"
+                >Submitted: 18 Jan 2024 | Rejected: 19 Jan 2024</span
+              >
+            </div>
+            <div class="request-details">
+              <h3>Proof of Address Request</h3>
+              <p><strong>User:</strong> Mtswene (Mtswene@example.com)</p>
+              <p><strong>Admin:</strong> Admin User (admin@idvault.com)</p>
+              <p><strong>Reason:</strong> Incomplete documentation</p>
+            </div>
+            <div class="request-status rejected">
+              <span>Status: Rejected</span>
+            </div>
+            <div class="request-actions">
+              <button class="action-btn view">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+
+          <div class="request-card">
+            <div class="request-header">
+              <span class="request-type home">Home Affairs</span>
+              <span class="request-date">Submitted: 20 Jan 2024 | Pending</span>
+            </div>
+            <div class="request-details">
+              <h3>Passport Application</h3>
+              <p><strong>User:</strong> Mtswene (Mtswene.j@example.com)</p>
+            </div>
+            <div class="request-status pending">
+              <span>Status: Pending Review</span>
+            </div>
+            <div class="request-actions">
+              <button class="action-btn view">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../public/assets/js/admin.js"></script>
+  </body>
+</html>

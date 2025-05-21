@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Overview | Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut | Admin</div>
+        <ul>
+          <li><a href="police-requests.html">Police Forum Requests</a></li>
+          <li>
+            <a href="local-certification-requests.html">Local Certifications</a>
+          </li>
+          <li><a href="home-affairs-requests.html">Home Affairs</a></li>
+          <li>
+            <a href="../public/auth/approval-history.html">Approval History</a>
+          </li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../public/search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../public/FirstPage.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="dashboard.html" class="active">Dashboard Overview</a>
+        <a href="user-management.html">User Management</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Dashboard Overview</h1>
+          <p>Quick insights and statistics for all application types.</p>
+        </div>
+      </main>
+
+      <section class="dashboard-overview">
+        <div class="stats-container">
+          <div class="stat-card">
+            <div class="stat-icon police">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Police Forum</h3>
+              <p class="stat-number">24</p>
+              <p class="stat-detail">5 Pending | 18 Approved | 1 Rejected</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon local">
+              <i class="fas fa-file-certificate"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Local Certifications</h3>
+              <p class="stat-number">42</p>
+              <p class="stat-detail">12 Pending | 28 Approved | 2 Rejected</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon home">
+              <i class="fas fa-passport"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Home Affairs</h3>
+              <p class="stat-number">37</p>
+              <p class="stat-detail">8 Pending | 25 Approved | 4 Rejected</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon total">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Total Applications</h3>
+              <p class="stat-number">103</p>
+              <p class="stat-detail">25 Pending | 71 Approved | 7 Rejected</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-activity">
+          <h2>Recent Activity</h2>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon approved">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="activity-details">
+                <p><strong>Police Forum</strong> application approved</p>
+                <p class="activity-meta">
+                  Affidavit Certificate for User123 | 10 mins ago
+                </p>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon rejected">
+                <i class="fas fa-times"></i>
+              </div>
+              <div class="activity-details">
+                <p><strong>Local Certification</strong> application rejected</p>
+                <p class="activity-meta">
+                  Proof of Address for User456 | 1 hour ago
+                </p>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="activity-details">
+                <p><strong>Home Affairs</strong> new application submitted</p>
+                <p class="activity-meta">
+                  Passport Application for User789 | 3 hours ago
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../public/assets/js/admin.js"></script>
+  </body>
+</html>

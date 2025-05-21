@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Affairs | Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut | Admin</div>
+        <ul>
+          <li><a href="police-requests.html">Police Forum Requests</a></li>
+          <li>
+            <a href="local-certification-requests.html">Local Certifications</a>
+          </li>
+          <li>
+            <a href="home-affairs-requests.html" class="active">Home Affairs</a>
+          </li>
+          <li>
+            <a href="../public/auth/approval-history.html">Approval History</a>
+          </li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../public/search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../public/FirstPage.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="dashboard.html">Dashboard Overview</a>
+        <a href="user-management.html">User Management</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Home Affairs Requests</h1>
+          <p>
+            Review and manage all Home Affairs document requests from users.
+          </p>
+        </div>
+      </main>
+
+      <section class="admin-requests">
+        <div class="requests-filter">
+          <button class="filter-btn active">All Home Affairs</button>
+          <button class="filter-btn">Pending</button>
+          <button class="filter-btn">Approved</button>
+          <button class="filter-btn">Rejected</button>
+        </div>
+
+        <div class="requests-list">
+          <div class="request-card">
+            <div class="request-header">
+              <span class="request-type home">Home Affairs</span>
+              <span class="request-date">Submitted: 20 Jan 2024</span>
+            </div>
+            <div class="request-details">
+              <h3>Passport Application</h3>
+              <p><strong>User:</strong> Mtswene (Mtswene.j@example.com)</p>
+              <p>
+                <strong>Details:</strong> New passport application with
+                expedited processing
+              </p>
+              <div class="request-files">
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-pdf"></i> Application_Form.pdf</a
+                >
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-image"></i> Passport_Photo.jpg</a
+                >
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-pdf"></i> ID_Copy.pdf</a
+                >
+              </div>
+            </div>
+            <div class="request-status action">
+              <span>Status: Requires Additional Documents</span>
+            </div>
+            <div class="request-actions">
+              <button class="action-btn approve">
+                <i class="fas fa-check"></i> Approve
+              </button>
+              <button class="action-btn reject">
+                <i class="fas fa-times"></i> Reject
+              </button>
+              <button class="action-btn request">
+                <i class="fas fa-paperclip"></i> Request More
+              </button>
+              <button class="action-btn view">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../public/assets/js/admin.js"></script>
+  </body>
+</html>
