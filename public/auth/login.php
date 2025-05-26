@@ -34,6 +34,10 @@ if ($user = $result->fetch_assoc()) {
                 "email" => $user["email"]
             ]
         ]);
+        // After successful password verification:
+        session_start();
+        $_SESSION['user_id'] = $user['id'];
+// Add any other user data you need
     } else {
         http_response_code(401);
         echo json_encode(["message" => "Incorrect password."]);
@@ -42,6 +46,7 @@ if ($user = $result->fetch_assoc()) {
     http_response_code(404);
     echo json_encode(["message" => "User not found."]);
 }
+
 
 $stmt->close();
 $conn->close();

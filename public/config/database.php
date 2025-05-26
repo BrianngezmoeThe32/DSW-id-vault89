@@ -1,6 +1,6 @@
 <?php
 
-echo "Database connected!";
+
 $host = 'localhost';
 $db   = 'idvault';
 $user = 'root';
