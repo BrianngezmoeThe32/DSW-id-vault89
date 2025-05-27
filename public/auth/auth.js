@@ -210,7 +210,7 @@ document
           alert(
             "Password reset successfully. You can now login with your new password."
           );
-          window.location.href = "/login.html";
+          window.location.href = "home.php";
         } else {
           alert("Error: " + data.message);
         }

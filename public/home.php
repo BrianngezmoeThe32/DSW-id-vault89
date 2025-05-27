@@ -19,7 +19,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Idvault Online - Home</title>
-    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../public/assets/css/home.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -35,7 +35,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
                 <i class="fa-solid fa-magnifying-glass"></i><a href="../public/search.html">Search</a>
                 <i class="fa-solid fa-user"></i><span><?php echo $username; ?></span>
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <a href="logout.php">Log out</a>
+                <a href="FirstPage.html">Log out</a>
             </div>
         </nav>
 
@@ -71,7 +71,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
                 <div class="offer-box" style="background-image: url('../images/settings-bg.jpg')">
                     <h3>Account Settings</h3>
                     <p>Review and update your account information, security settings, and preferences.</p>
-                    <button onclick="window.location.href='../public/setting.html'" class="info-box-button">Manage Account</button>
+                    <button onclick="window.location.href='../public/setting.php'" class="info-box-button">Manage Account</button>
                 </div>
             </div>
         </section>

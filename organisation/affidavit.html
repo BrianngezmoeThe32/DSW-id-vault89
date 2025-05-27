@@ -114,7 +114,6 @@
       <label for="signature">Signature:</label>
       <input type="text" id="signature" name="signature" required /><br /><br />
 
-
       <button type="submit" id="submitButton">Submit</button>
       <p id="confirmationMessage" style="color: green; display: none">
         Affidavit submitted successfully!
@@ -124,8 +123,33 @@
     <script>
       document
         .getElementById("affidavitForm")
-        .addEventListener("submit", function (event) {
-          document.getElementById("submitButton").disabled = true;
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const submitBtn = document.getElementById("submitButton");
+          submitBtn.disabled = true;
+
+          try {
+            const formData = new FormData(this);
+            const response = await fetch("send_affidavit.php", {
+              method: "POST",
+              body: formData,
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              document.getElementById("confirmationMessage").style.display =
+                "block";
+              // Optionally reset form
+              // this.reset();
+            } else {
+              alert("Error: " + result.message);
+            }
+          } catch (error) {
+            alert("Network error: " + error);
+          } finally {
+            submitBtn.disabled = false;
+          }
         });
     </script>
   </body>
