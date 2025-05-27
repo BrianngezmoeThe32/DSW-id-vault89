@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idvault Online - Check Application Status</title>
+    <link rel="stylesheet" href="../public/assets/css/home.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut |</div>
+        <ul>
+          <li><a href="../organisation/police.html">Police Forum</a></li>
+          <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
+          <li><a href="../organisation/homeAff.html"> Home Affairs</a></li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../public/search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../public/FirstPage.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="../public/status-check.html">Check status</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Application Status</h1>
+          <p>Track the progress of your document applications.</p>
+        </div>
+      </main>
+
+      <section class="status-check">
+        <div class="status-search">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Enter application reference number"
+            />
+            <button class="search-btn">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+          <p class="search-help">
+            Don't have a reference number?
+            <a href="#">View all your applications</a>
+          </p>
+        </div>
+
+        <div class="status-timeline">
+          <h2>Your Recent Applications</h2>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3>Affidavit Certificate</h3>
+              <span class="status-badge approved">Approved</span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-progress">
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Submitted</div>
+                  <div class="step-date">15 Jan 2024</div>
+                </div>
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Under Review</div>
+                  <div class="step-date">16 Jan 2024</div>
+                </div>
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Approved</div>
+                  <div class="step-date">18 Jan 2024</div>
+                </div>
+                <div class="progress-step current">
+                  <div class="step-icon"><i class="fas fa-file-pdf"></i></div>
+                  <div class="step-label">Document Ready</div>
+                  <div class="step-date">18 Jan 2024</div>
+                </div>
+              </div>
+              <div class="timeline-actions">
+                <button class="action-btn download">
+                  <i class="fas fa-download"></i> Download Document
+                </button>
+                <button class="action-btn feedback">
+                  <i class="fas fa-comment"></i> Provide Feedback
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3>Proof of Address</h3>
+              <span class="status-badge review">Under Review</span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-progress">
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Submitted</div>
+                  <div class="step-date">20 Jan 2024</div>
+                </div>
+                <div class="progress-step current">
+                  <div class="step-icon"><i class="fas fa-spinner"></i></div>
+                  <div class="step-label">Under Review</div>
+                  <div class="step-date">21 Jan 2024</div>
+                </div>
+                <div class="progress-step">
+                  <div class="step-icon"></div>
+                  <div class="step-label">Approval</div>
+                  <div class="step-date">Pending</div>
+                </div>
+                <div class="progress-step">
+                  <div class="step-icon"></div>
+                  <div class="step-label">Document Ready</div>
+                  <div class="step-date">Pending</div>
+                </div>
+              </div>
+              <div class="timeline-message">
+                <p>
+                  <i class="fas fa-info-circle"></i> Your application is
+                  currently being reviewed by our team. Please check back later
+                  for updates.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3>Passport Application</h3>
+              <span class="status-badge action">More Info Needed</span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-progress">
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Submitted</div>
+                  <div class="step-date">22 Jan 2024</div>
+                </div>
+                <div class="progress-step completed">
+                  <div class="step-icon"><i class="fas fa-check"></i></div>
+                  <div class="step-label">Under Review</div>
+                  <div class="step-date">23 Jan 2024</div>
+                </div>
+                <div class="progress-step current">
+                  <div class="step-icon">
+                    <i class="fas fa-exclamation"></i>
+                  </div>
+                  <div class="step-label">More Info Needed</div>
+                  <div class="step-date">24 Jan 2024</div>
+                </div>
+                <div class="progress-step">
+                  <div class="step-icon"></div>
+                  <div class="step-label">Document Ready</div>
+                  <div class="step-date">Pending</div>
+                </div>
+              </div>
+              <div class="timeline-message alert">
+                <p>
+                  <i class="fas fa-exclamation-triangle"></i> Additional
+                  documents required: Please upload a clear copy of your birth
+                  certificate and recent passport photo.
+                </p>
+              </div>
+              <div class="timeline-actions">
+                <button class="action-btn upload">
+                  <i class="fas fa-upload"></i> Upload Documents
+                </button>
+                <button class="action-btn contact">
+                  <i class="fas fa-headset"></i> Contact Support
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer (same as home page) -->
+      <div class="container">
+        <div class="footer">
+          <!-- Footer content same as home page -->
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <!-- Footer content same as home page -->
+      </footer>
+    </div>
+  </body>
+</html>

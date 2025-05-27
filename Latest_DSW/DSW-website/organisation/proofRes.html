@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Police Forum</title>
+     <Link rel="stylesheet" href="../public/assets/css/home.css">
+     <link rel="stylesheet" href="../public/assets/css/proofRes.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+     <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+        }
+
+        .modal-buttons {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Map styles */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .custom-map-control-button {
+            background-color: #fff;
+            border: 0;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            padding: 0 5px;
+            height: 40px;
+            cursor: pointer;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+   </head>
+   <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut |</div>
+        <ul>
+            <li><a href="../organisation/police.html">Police Forum</a></li>
+            <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
+            <li><a href="../organisation/homeAff.html"> Home Affairs</a></li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i><a href="../public/search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../public/FirstPage.html">Log out</a>
+        </div>
+      </nav>
+      <div class="submenu">
+        <a href="../organisation/proofRes.html">Local Certifications</a>
+      </div>
+     
+     <main>
+       <section class = "features">
+           <div class = "heading">
+               <h4>FEATURES</h4>
+               <h1>All the services you need right at your fingertip.</h1>
+               <h3>We are all tired of going to the Municipality every three months.
+                With IdVaullt you get all your legal documents validation at the tip of your fingers.
+               </h3>
+           
+       </section>
+       <section class = "topFeatures">
+           <div class = "feature1">
+               <div class = "background1">
+                   <div class = "featureName"><h2>Get Proof of Residence</h2></div>
+               </div>
+               <button class = "seeDetails">See Details</button>
+             </div>
+           
+       </section>
+       <div class="container">
+             
+         <div class="footer">
+             <div>
+                 <h3>Social</h3>
+                 <div class="social-icons">
+                     <i class="fab fa-facebook-f"></i>
+                     <i class="fab fa-x-twitter"></i>
+                     <i class="fab fa-linkedin-in"></i>
+                     <i class="fab fa-blogger"></i>
+                 </div>
+             </div>
+           <div>
+                 <h3>Useful Tools</h3>
+                 <ul>
+                     <li><a href="#">Digital Certification</a></li>
+                     <li><a href="#">rates and fees</a></li>
+                     <li><a href="#">Latest offers</a></li>
+                     <li><a href="#">Find a branch</a></li>
+                     <li><a href="#">Safety and security</a></li>
+                     
+                 </ul>
+             </div>
+             <div>
+                 <h3>Who we are</h3>
+                 <ul>
+                     <li><a href="#">About Idvault</a></li>
+                     <li><a href="#">Investor Relations</a></li>
+                     <li><a href="#">Citizenship</a></li>
+                     <li><a href="#">Arts</a></li>
+                     <li><a href="#">Media Centre</a></li>
+                     <li><a href="#">Sponsorship</a></li>
+                     <li><a href="#">Careers</a></li>
+                 </ul>
+             </div>
+             <div>
+                 <h3>Our Sites</h3>
+                 <ul>
+                     <li><a href="../organisation/police.html">Police Forum</a></li>
+                     <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
+                     <li><a href="../organisation/homeAff.html">Home Affairs</a></li>
+                     <li><a href="../public/home.html">Home</a></li>
+                     
+                 </ul>
+             </div>
+             <div>
+                 <h3>Support</h3>
+                 <ul>
+                     <li><a href="../public/contactus.html">Contact Us</a></li>
+                     <li><a href="../public/feedback.html">Send your feedback</a></li>
+                 </ul>
+             </div>
+             
+         </div>
+       </div>
+       <footer class="site-footer">
+         <div class="footer-links">
+           <a href="#">Terms Of Use</a>
+           <span>|</span>
+           <a href="#">Idvault Regulations</a>
+           <span>|</span>
+           <a href="#">Privacy Statement</a>
+           <span>|</span>
+           <a href="#">Security Centre</a>
+         </div>
+         <p class="footer-text">
+         </p>
+         <p class="footer-text">
+           © Copyright. Idvault Limited, Registration number 2025/03/06. All rights reserved |
+           <a href="#">Authorised online Documantation Services Provider</a>
+         </p>
+         <div class="footer-border"></div>
+       </footer>
+       <script>
+         const buttons = document.querySelectorAll('.seeDetails');
+     
+         buttons.forEach(button => {
+             button.addEventListener('click', function() {
+                 showConfirmation();
+             });
+         });
+
+         function showConfirmation() {
+             document.getElementById('confirmationModal').style.display = 'block';
+         }
+
+         function closeModal() {
+             document.getElementById('confirmationModal').style.display = 'none';
+         }
+
+         function proceedWithLocation() {
+             closeModal();
+             document.getElementById('map').style.display = 'block';
+             // The map will be initialized and location button will be available
+         }
+
+         // Close modal if user clicks outside of it
+         window.onclick = function(event) {
+             var modal = document.getElementById('confirmationModal');
+             if (event.target == modal) {
+                 closeModal();
+             }
+         }
+       </script>
+
+       <!-- Confirmation Modal -->
+       <div id="confirmationModal" class="modal">
+           <div class="modal-content">
+               <h2>Location Access Required</h2>
+               <p>To proceed with proof of residence verification, we need to access your location. Do you agree to share your location?</p>
+               <div class="modal-buttons">
+                   <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                   <button class="btn btn-primary" onclick="proceedWithLocation()">Agree</button>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- Add map container -->
+   <div id="map"></div>
+
+   <!-- Add Google Maps API -->
+   <script src="https://maps.googleapis.com/maps/api/js?key=IdVault&callback=initMap" async defer></script>
+   
+   <script>
+       let map, infoWindow;
+
+       function initMap() {
+           map = new google.maps.Map(document.getElementById("map"), {
+               center: { lat: -34.397, lng: 150.644 },
+               zoom: 6,
+           });
+           infoWindow = new google.maps.InfoWindow();
+
+           const locationButton = document.createElement("button");
+           locationButton.textContent = "Pan to Current Location";
+           locationButton.classList.add("custom-map-control-button");
+           map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+           
+           locationButton.addEventListener("click", () => {
+               if (navigator.geolocation) {
+                   navigator.geolocation.getCurrentPosition(
+                       (position) => {
+                           const pos = {
+                               lat: position.coords.latitude,
+                               lng: position.coords.longitude,
+                           };
+
+                           infoWindow.setPosition(pos);
+                           infoWindow.setContent("Location found.");
+                           infoWindow.open(map);
+                           map.setCenter(pos);
+
+                           // Send location to proofR.php
+                           fetch('proofR.php', {
+                               method: 'POST',
+                               headers: {
+                                   'Content-Type': 'application/json'
+                               }
+                           })
+                           .then(response => response.text())
+                           .then(data => {
+                               alert('Location data has been recorded successfully');
+                           })
+                           .catch(error => {
+                               console.error('Error:', error);
+                               alert('There was an error processing your request');
+                           });
+                       },
+                       () => {
+                           handleLocationError(true, infoWindow, map.getCenter());
+                       }
+                   );
+               } else {
+                   handleLocationError(false, infoWindow, map.getCenter());
+               }
+           });
+       }
+
+       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+           infoWindow.setPosition(pos);
+           infoWindow.setContent(
+               browserHasGeolocation
+                   ? "Error: The Geolocation service failed."
+                   : "Error: Your browser doesn't support geolocation."
+           );
+           infoWindow.open(map);
+       }
+   </script>
+ </body>
+ </html>

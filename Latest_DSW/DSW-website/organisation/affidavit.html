@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Affidavit Form</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="tel"],
+      input[type="date"],
+      input[type="time"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AFFIDAVIT</h1>
+    <p>(To be completed in the presence of a Commissioner of Oaths)</p>
+
+    <form
+      id="affidavitForm"
+      action="send_affidavit.php"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="name">I:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="idNumber">ID-Number:</label>
+      <input type="text" id="idNumber" name="idNumber" required />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required /><br /><br />
+
+      <label for="residingAddress">Residing address:</label>
+      <input
+        type="text"
+        id="residingAddress"
+        name="residingAddress"
+        required
+      /><br /><br />
+
+      <label for="workingAddress">Working address:</label>
+      <input
+        type="text"
+        id="workingAddress"
+        name="workingAddress"
+      /><br /><br />
+
+      <label for="telW">Tel (w):</label>
+      <input type="tel" id="telW" name="telW" />
+
+      <label for="telH">Tel (h):</label>
+      <input type="tel" id="telH" name="telH" />
+
+      <label for="telCell">Tel (cell):</label>
+      <input type="tel" id="telCell" name="telCell" /><br /><br />
+
+      <label for="declaration"
+        >Declare under oath in English / confirm in English -</label
+      ><br />
+      <textarea
+        id="declaration"
+        name="declaration"
+        rows="4"
+        cols="50"
+        required
+      ></textarea
+      ><br /><br />
+
+      <p>
+        I am familiar with, and understand the contents of this declaration. I
+        have no objection/have objection to taking the prescribed oath. I
+        consider the prescribed oath as binding to my conscience.
+      </p>
+
+      <label for="place">Place:</label>
+      <input type="text" id="place" name="place" required />
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required /><br /><br />
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required /><br /><br />
+
+      <label for="signature">Signature:</label>
+      <input type="text" id="signature" name="signature" required /><br /><br />
+
+
+      <button type="submit" id="submitButton">Submit</button>
+      <p id="confirmationMessage" style="color: green; display: none">
+        Affidavit submitted successfully!
+      </p>
+    </form>
+
+    <script>
+      document
+        .getElementById("affidavitForm")
+        .addEventListener("submit", function (event) {
+          document.getElementById("submitButton").disabled = true;
+        });
+    </script>
+  </body>
+</html>
