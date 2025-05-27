@@ -1,4 +1,3 @@
-
 const campusLocations = {
     APB: {
         name: 'Auckland Park Bunting Road Campus',
@@ -24,25 +23,32 @@ const campusLocations = {
 
 let map;
 let markers = [];
-
+let userMarker;
+let userPosition;
 
 function initMap() {
-    
     const joburg = [-26.2041, 28.0473];
     
     map = L.map('map').setView(joburg, 11);
-
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    
+    // Add campus markers
     Object.entries(campusLocations).forEach(([key, campus]) => {
         addMarker(campus.position, campus.name);
     });
 
-    
+    // Add current location button
+    L.control.locate({
+        position: 'topleft',
+        strings: {
+            title: "Show my location"
+        }
+    }).addTo(map);
+
+    // Handle campus selection
     document.getElementById('campus').addEventListener('change', function(e) {
         const selectedCampus = campusLocations[e.target.value];
         if (selectedCampus) {
@@ -50,8 +56,34 @@ function initMap() {
             showBranchInfo(selectedCampus);
         }
     });
-}
 
+    // Handle form submission
+    document.getElementById('branch-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const selectedCampus = campusLocations[document.getElementById('campus').value];
+        if (selectedCampus) {
+            openGoogleMapsDirections(selectedCampus);
+        } else {
+            alert('Please select a campus to get directions.');
+        }
+    });
+
+    // Get user's location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            userPosition = [position.coords.latitude, position.coords.longitude];
+            if (!userMarker) {
+                userMarker = L.marker(userPosition)
+                    .bindPopup('Your Location')
+                    .addTo(map);
+            } else {
+                userMarker.setLatLng(userPosition);
+            }
+        }, function(error) {
+            console.error('Error getting location:', error);
+        });
+    }
+}
 
 function addMarker(position, title) {
     const marker = L.marker(position)
@@ -60,7 +92,6 @@ function addMarker(position, title) {
     markers.push(marker);
 }
 
-
 function showBranchInfo(campus) {
     const infoDiv = document.getElementById('selected-branch-info');
     infoDiv.style.display = 'block';
@@ -68,6 +99,24 @@ function showBranchInfo(campus) {
         <h3>${campus.name}</h3>
         <p>${campus.address}</p>
     `;
+}
+
+function openGoogleMapsDirections(campus) {
+    let url = 'https://www.google.com/maps/dir/?api=1';
+    
+    // Add destination
+    url += `&destination=${campus.position[0]},${campus.position[1]}`;
+    
+    // Add destination name
+    url += `&destination_place_id=${encodeURIComponent(campus.name)}`;
+    
+    // If we have user's location, add it as origin
+    if (userPosition) {
+        url += `&origin=${userPosition[0]},${userPosition[1]}`;
+    }
+    
+    // Open in new tab
+    window.open(url, '_blank');
 }
 
 window.onload = initMap;
