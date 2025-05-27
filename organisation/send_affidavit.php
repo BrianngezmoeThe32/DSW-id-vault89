@@ -1,17 +1,18 @@
 <?php
-require_once '../public/config/database.php'; // Your database connection file
+session_start();
+
 
 header('Content-Type: application/json');
 
 // Get user ID from session (you'll need to implement session handling)
-session_start();
+$user_id = $_SESSION['user_id'];
 if (!isset($_SESSION['user_id'])) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'message' => 'Not authenticated']);
+    $_SESSION['form_data'] = $_POST;
+    header("Location: login.php?return_to=affidavit_form");
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+
 
 try {
     // Begin transaction

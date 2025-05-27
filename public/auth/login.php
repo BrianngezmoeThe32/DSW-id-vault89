@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 header("Content-Type: application/json");
 
 $conn = new mysqli("localhost", "root", "", "idvault");
@@ -18,7 +19,6 @@ if (!$email || !$password) {
     exit();
 }
 
-// Fetch user by email
 $stmt = $conn->prepare("SELECT id, name, email, password FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -26,6 +26,11 @@ $result = $stmt->get_result();
 
 if ($user = $result->fetch_assoc()) {
     if (password_verify($password, $user["password"])) {
+        // Store user data in session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_email'] = $user['email'];
+        
         echo json_encode([
             "message" => "Login successful.",
             "user" => [
@@ -34,10 +39,6 @@ if ($user = $result->fetch_assoc()) {
                 "email" => $user["email"]
             ]
         ]);
-        // After successful password verification:
-        session_start();
-        $_SESSION['user_id'] = $user['id'];
-// Add any other user data you need
     } else {
         http_response_code(401);
         echo json_encode(["message" => "Incorrect password."]);
@@ -46,7 +47,6 @@ if ($user = $result->fetch_assoc()) {
     http_response_code(404);
     echo json_encode(["message" => "User not found."]);
 }
-
 
 $stmt->close();
 $conn->close();

@@ -1,26 +1,23 @@
+// auth.js - Complete Login/Registration Handling
+
+// DOM Elements
 const pass1 = document.getElementById("pass1");
 const pass2 = document.getElementById("pass2");
 const passStat = document.getElementById("passwordstat");
-
 const loginPage = document.querySelector(".login");
 const confirmationPage = document.querySelector(".confirmation");
-
 const btnSwitchLogIn = document.querySelector(".SwitchLoginIn");
-const btnSubmit = document.querySelector(".Submit");
-
 const signIn = document.querySelector(".signIn");
 const signUp = document.querySelector(".signUp");
 const altSign = document.querySelector(".altSignIn");
 const altSigntxt = document.querySelector("#altSignIntext");
-
 const Welcometxt = document.querySelector("#Welcometxt");
 const welcomebodytxt = document.querySelector("#welcomebodytxt");
-
 const adminToggle = document.getElementById("adminLoginCheck");
 const registerBtn = document.getElementById("registerBtn");
 
-// Toggle login/signup views
-btnSwitchLogIn.addEventListener("click", () => {
+// Toggle between login/signup views
+btnSwitchLogIn?.addEventListener("click", () => {
   if (btnSwitchLogIn.textContent === "Sign Up") {
     Welcometxt.textContent = "Create a New Account";
     welcomebodytxt.textContent =
@@ -45,8 +42,8 @@ btnSwitchLogIn.addEventListener("click", () => {
   }
 });
 
-// Admin login toggle (optional functionality)
-adminToggle.addEventListener("change", () => {
+// Admin login toggle
+adminToggle?.addEventListener("change", () => {
   if (adminToggle.checked) {
     signIn.classList.add("admin-mode");
     document.getElementById("signInUser").placeholder = "Admin Email";
@@ -56,7 +53,7 @@ adminToggle.addEventListener("change", () => {
   }
 });
 
-// Password strength check
+// Password strength checker
 function checkPasswordStrength(password) {
   let strength = 0;
   if (password.length > 7) strength += 1;
@@ -67,7 +64,7 @@ function checkPasswordStrength(password) {
   return strength;
 }
 
-pass1.addEventListener("input", function () {
+pass1?.addEventListener("input", function () {
   const strength = checkPasswordStrength(this.value);
   const strengthText = ["Weak", "Medium", "Strong"][Math.min(strength, 2)];
   passStat.textContent = `Password Strength: ${strengthText}`;
@@ -76,8 +73,8 @@ pass1.addEventListener("input", function () {
   passStat.style.display = "flex";
 });
 
-// Register new user
-registerBtn.addEventListener("click", async function () {
+// Registration Handler
+registerBtn?.addEventListener("click", async function () {
   const name = document.getElementById("FullName").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phonenumber").value.trim();
@@ -113,9 +110,7 @@ registerBtn.addEventListener("click", async function () {
 
     const response = await fetch("../auth/register.php", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
     });
 
@@ -140,10 +135,11 @@ registerBtn.addEventListener("click", async function () {
   }
 });
 
-// Handle login
+// Login Handler - UPDATED VERSION
 document
   .querySelector(".SignInbtn")
-  .addEventListener("click", async function () {
+  ?.addEventListener("click", async function () {
+    const btn = this;
     const email = document.getElementById("signInUser").value.trim();
     const password = document.getElementById("signInPass").value.trim();
 
@@ -153,12 +149,14 @@ document
     }
 
     try {
+      // Set loading state
+      btn.disabled = true;
+      btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Logging in...';
+
       const response = await fetch("../auth/login.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -167,57 +165,54 @@ document
         throw new Error(data.message || "Login failed");
       }
 
-      alert("Login successful!");
-      window.location.href = "../home.html";
+      // Successful login - redirect to PHP home page
+      window.location.href = "../home.php";
     } catch (error) {
       alert(`Login failed: ${error.message}`);
+    } finally {
+      // Reset button state
+      btn.disabled = false;
+      btn.textContent = "Login";
     }
   });
 
-// Password reset functionality
-if (document.getElementById("submitNewPassword")) {
-  document
-    .getElementById("submitNewPassword")
-    .addEventListener("click", function () {
-      const token = document.getElementById("resetToken").value;
-      const newPassword = document.getElementById("newPassword").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
+// Password Reset Handler
+document
+  .getElementById("submitNewPassword")
+  ?.addEventListener("click", function () {
+    const token = document.getElementById("resetToken").value;
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-      if (!token) {
-        alert("Invalid reset token");
-        return;
-      }
+    if (!token) {
+      alert("Invalid reset token");
+      return;
+    }
 
-      if (newPassword !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-      }
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-      if (newPassword.length < 8) {
-        alert("Password must be at least 8 characters");
-        return;
-      }
+    if (newPassword.length < 8) {
+      alert("Password must be at least 8 characters");
+      return;
+    }
 
-      fetch("../auth/reset-password-handler.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: token,
-          password: newPassword,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            alert(
-              "Password reset successfully. You can now login with your new password."
-            );
-            window.location.href = "/login.html";
-          } else {
-            alert("Error: " + data.message);
-          }
-        });
-    });
-}
+    fetch("../auth/reset-password-handler.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token, password: newPassword }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert(
+            "Password reset successfully. You can now login with your new password."
+          );
+          window.location.href = "/login.html";
+        } else {
+          alert("Error: " + data.message);
+        }
+      });
+  });
