@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idvault Online - Approval History</title>
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo" img="" alt="logo">IdVaut | Admin</div>
+        <ul>
+          <li><a href="police-requests.html">Police Forum Requests</a></li>
+          <li>
+            <a href="local-certification-requests.html">Local Certifications</a>
+          </li>
+          <li><a href="home-affairs-requests.html">Home Affairs</a></li>
+          <li>
+            <a href="../auth/approval-history.html" class="active">Approval History</a>
+          </li>
+        </ul>
+        <div class="user-actions">
+          <i class="fa-solid fa-magnifying-glass"></i
+          ><a href="../search.html">Search</a>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ><a href="../FirstPage.html">Log out</a>
+        </div>
+      </nav>
+
+      <div class="submenu">
+        <a href="../admin-dashboard.html">Dashboard Overview</a>
+        <a href="user-management.html">User Management</a>
+      </div>
+
+      <main class="banner">
+        <div class="banner-text">
+          <h1>Approval History</h1>
+          <p>View all approved and rejected document requests.</p>
+        </div>
+      </main>
+
+      <section class="approval-history">
+        <div class="history-filters">
+          <div class="filter-group">
+            <label for="date-range">Date Range:</label>
+            <select id="date-range">
+              <option value="7">Last 7 days</option>
+              <option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="custom">Custom Range</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="request-type">Request Type:</label>
+            <select id="request-type">
+              <option value="all">All Types</option>
+              <option value="police">Police Forum</option>
+              <option value="local">Local Certifications</option>
+              <option value="home">Home Affairs</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="status">Status:</label>
+            <select id="status">
+              <option value="all">All Statuses</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+          <button class="filter-btn apply">Apply Filters</button>
+          <button class="filter-btn export">
+            <i class="fas fa-file-export"></i> Export
+          </button>
+        </div>
+
+        <div class="history-list">
+          <div class="history-card approved">
+            <div class="history-header">
+              <span class="request-type police">Police Forum</span>
+              <span class="history-date">Approved: 15 Jan 2024</span>
+              <span class="history-admin">By: Admin User</span>
+            </div>
+            <div class="history-details">
+              <h3>Affidavit Certificate</h3>
+              <p><strong>User:</strong> John Doe (john.doe@example.com)</p>
+              <p>
+                <strong>Approval Notes:</strong> All documents verified and in
+                order.
+              </p>
+              <div class="history-files">
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-pdf"></i> Approved_Document.pdf</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="history-card approved">
+            <div class="history-header">
+              <span class="request-type local">Local Certifications</span>
+              <span class="history-date">Approved: 10 Jan 2024</span>
+              <span class="history-admin">By: Admin User</span>
+            </div>
+            <div class="history-details">
+              <h3>Proof of Address</h3>
+              <p><strong>User:</strong> Sarah Williams (sarah.w@example.com)</p>
+              <p>
+                <strong>Approval Notes:</strong> Address verified with utility
+                bill.
+              </p>
+              <div class="history-files">
+                <a href="#" class="file-link"
+                  ><i class="fas fa-file-pdf"></i> Proof_of_Address.pdf</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="history-card rejected">
+            <div class="history-header">
+              <span class="request-type home">Home Affairs</span>
+              <span class="history-date">Rejected: 5 Jan 2024</span>
+              <span class="history-admin">By: Admin User</span>
+            </div>
+            <div class="history-details">
+              <h3>Passport Application</h3>
+              <p>
+                <strong>User:</strong> Michael Brown (michael.b@example.com)
+              </p>
+              <p>
+                <strong>Rejection Reason:</strong> Incomplete application form
+                and missing ID copy.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <button class="page-btn" disabled>
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- Footer (same as home page) -->
+      <div class="container">
+        <div class="footer">
+          <!-- Footer content same as home page -->
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <!-- Footer content same as home page -->
+      </footer>
+    </div>
+  </body>
+</html>
