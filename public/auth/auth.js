@@ -142,6 +142,8 @@ document
     const btn = this;
     const email = document.getElementById("signInUser").value.trim();
     const password = document.getElementById("signInPass").value.trim();
+    const isAdminLogin = document.getElementById("adminLoginCheck").checked;
+
 
     if (!email || !password) {
       alert("Please enter email and password.");
@@ -156,7 +158,7 @@ document
       const response = await fetch("../auth/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password,isAdminLogin }),
       });
 
       const data = await response.json();
@@ -166,7 +168,7 @@ document
       }
 
       // Successful login - redirect to PHP home page
-      window.location.href = "../home.php";
+      window.location.href = data.redirect;
     } catch (error) {
       alert(`Login failed: ${error.message}`);
     } finally {
