@@ -9,7 +9,17 @@ body {
 }
 .top-bar {
   background: #eee;
-  padding: 10px;
+  padding: 5px;
+  font-size: 0.9rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar {
@@ -17,8 +27,15 @@ body {
   grid-template-columns: auto 1fr auto;
   background: white;
   color: black;
-  padding: 10px;
+  padding: 5px 10px;
   align-items: center;
+  position: fixed;
+  top: 25px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  height: 45px;
 }
 
 .navbar ul {
@@ -43,12 +60,18 @@ body {
   display: flex;
   justify-content: center;
   background: rgb(255, 18, 18);
-  padding: 10px;
+  padding: 12px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
 .submenu a {
   color: white;
   text-decoration: none;
   margin: 0 15px;
+  font-size: 1.1rem;
 }
 .banner {
   background: url("../photos/pexels-pixabay-268533.jpg") no-repeat center
@@ -58,6 +81,9 @@ body {
   align-items: center;
   justify-content: center;
   height: 300px;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .info {
@@ -131,12 +157,15 @@ body {
   cursor: pointer;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .offer-box:hover {
   background-color: rgba(211, 211, 211, 0.5);
   opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .offer-box h3 {
@@ -391,4 +420,9 @@ body {
 .notification-time {
   color: #999;
   font-size: 0.8rem;
+}
+
+/* Adjust the main content to account for all fixed elements */
+.container {
+  padding-top: 110px;
 }
