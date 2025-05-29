@@ -26,12 +26,14 @@ if (!in_array($_FILES['certificate']['type'], $allowed_types)) {
 }
 
 // Create uploads directory if it doesn't exist
-if (!file_exists('uploads')) {
-    mkdir('uploads', 0777, true);
+$uploadDir = '../public/uploads/documents/certifications/';
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
 }
 
 $filename = uniqid() . '_' . basename($_FILES['certificate']['name']);
-$target_path = 'uploads/' . $filename;
+$target_path = $uploadDir . $filename;
+$relative_path = 'uploads/documents/certifications/' . $filename;
 
 if (!move_uploaded_file($_FILES['certificate']['tmp_name'], $target_path)) {
     http_response_code(500);
@@ -43,13 +45,13 @@ try {
     $pdo->beginTransaction();
     
     // Insert into documents table
-    $stmt = $pdo->prepare("INSERT INTO documents (user_id, document_type, status) VALUES (?, 'certified', 'pending')");
-    $stmt->execute([$user_id]);
+    $stmt = $pdo->prepare("INSERT INTO documents (user_id, document_type, status, document_path) VALUES (?, 'certified', 'pending', ?)");
+    $stmt->execute([$user_id, $relative_path]);
     $document_id = $pdo->lastInsertId();
     
     // Insert certified document data
     $stmt = $pdo->prepare("INSERT INTO certified_documents (document_id, original_filename, file_path) VALUES (?, ?, ?)");
-    $stmt->execute([$document_id, $_FILES['certificate']['name'], $target_path]);
+    $stmt->execute([$document_id, $_FILES['certificate']['name'], $relative_path]);
     
     $pdo->commit();
     

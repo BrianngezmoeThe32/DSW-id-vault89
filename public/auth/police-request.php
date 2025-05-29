@@ -1,24 +1,20 @@
-<?php 
+<?php
 session_start();
 require_once '../public/config/database.php';
 
 // Check if admin is logged in
-if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
-    header("Location: ../auth/login.php");
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: admin_login.php");
     exit();
 }
 
-// Get pending documents from database
+// Get all police-related documents
 try {
     $stmt = $pdo->prepare("
-        SELECT d.*, u.name, u.email,
-               COALESCE(cd.file_path, ad.file_path, pd.file_path) AS document_path
+        SELECT d.*, u.name, u.email 
         FROM documents d
         JOIN users u ON d.user_id = u.id
-        LEFT JOIN certified_documents cd ON d.id = cd.document_id
-        LEFT JOIN affidavit_data ad ON d.id = ad.document_id
-        LEFT JOIN passport_documents pd ON d.id = pd.document_id
-        WHERE d.status = 'pending'
+        WHERE d.document_type IN ('Affidavit', 'Certified Document')
         ORDER BY d.created_at DESC
     ");
     $stmt->execute();
@@ -31,10 +27,10 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Idvault Online - Admin Dashboard</title>
-    <link rel="stylesheet" href="../public/assets/css/home.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Forum Requests</title>
+    <link rel="stylesheet" href="../public/assets/css/admin.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -48,32 +44,20 @@ try {
                 <li><a href="approval-history.php">Approval History</a></li>
             </ul>
             <div class="user-actions">
-                <i class="fa-solid fa-user"></i><span><?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                <i class="fa-solid fa-user"></i><span><?= htmlspecialchars($_SESSION['admin_name']) ?></span>
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <a href="admin_logout.php">Log out</a>
             </div>
         </nav>
 
-        <div class="submenu">
-            <a href="dashboard.php" class="active">Dashboard Overview</a>
-            <a href="user-management.php">User Management</a>
-        </div>
-
         <main class="banner">
             <div class="banner-text">
-                <h1>Admin Dashboard</h1>
-                <p>Review and approve pending document requests from users.</p>
+                <h1>Police Forum Requests</h1>
+                <p>View and manage all affidavit and certified document requests.</p>
             </div>
         </main>
 
         <section class="admin-requests">
-            <div class="requests-filter">
-                <button class="filter-btn active">All Requests</button>
-                <button class="filter-btn">Police Forum</button>
-                <button class="filter-btn">Local Certifications</button>
-                <button class="filter-btn">Home Affairs</button>
-            </div>
-
             <div class="requests-list">
                 <?php foreach ($documents as $document): ?>
                 <div class="request-card" data-doc-id="<?= $document['id'] ?>">
@@ -89,17 +73,16 @@ try {
                         <h3><?= htmlspecialchars($document['document_type']) ?> Request</h3>
                         <p><strong>User:</strong> <?= htmlspecialchars($document['name']) ?> (<?= htmlspecialchars($document['email']) ?>)</p>
                         <p><strong>Status:</strong> <span class="status-badge <?= $document['status'] ?>"><?= htmlspecialchars($document['status']) ?></span></p>
-                        <?php if (!empty($document['document_path'])): ?>
-                        <p><strong>File:</strong> <?= htmlspecialchars(basename($document['document_path'])) ?></p>
-                        <?php endif; ?>
                     </div>
                     <div class="request-actions">
-                        <button class="action-btn approve" data-doc-id="<?= $document['id'] ?>">
-                            <i class="fas fa-check"></i> Approve
-                        </button>
-                        <button class="action-btn reject" data-doc-id="<?= $document['id'] ?>">
-                            <i class="fas fa-times"></i> Reject
-                        </button>
+                        <?php if ($document['status'] === 'pending'): ?>
+                            <button class="action-btn approve" data-doc-id="<?= $document['id'] ?>">
+                                <i class="fas fa-check"></i> Approve
+                            </button>
+                            <button class="action-btn reject" data-doc-id="<?= $document['id'] ?>">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        <?php endif; ?>
                         <a href="view-document.php?id=<?= $document['id'] ?>" class="action-btn view">
                             <i class="fas fa-eye"></i> View Details
                         </a>

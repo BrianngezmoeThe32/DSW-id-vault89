@@ -17,7 +17,7 @@ function handleGoogleLogin() {
           .then((data) => {
             if (data.success) {
               // Redirect or handle successful login
-              window.location.href = "/dashboard";
+              window.location.href = "home.html";
             } else {
               alert("Google login failed: " + data.message);
             }

@@ -2,26 +2,40 @@
 session_start();
 require_once '../public/config/database.php';
 
-
 header('Content-Type: application/json');
 
-// Get user ID from session (you'll need to implement session handling)
-$user_id = $_SESSION['user_id'];
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['form_data'] = $_POST;
-    header("Location: login.php?return_to=affidavit_form");
+    echo json_encode(['success' => false, 'message' => 'Not authenticated']);
     exit;
 }
 
-
+$user_id = $_SESSION['user_id'];
 
 try {
-    // Begin transaction
     $pdo->beginTransaction();
     
+    // Handle file upload if exists
+    $file_path = null;
+    if (isset($_FILES['document']) && $_FILES['document']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = '../public/uploads/documents/affidavits/';
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+        
+        $filename = uniqid() . '_' . basename($_FILES['document']['name']);
+        $target_path = $uploadDir . $filename;
+        $relative_path = 'uploads/documents/affidavits/' . $filename;
+        
+        if (move_uploaded_file($_FILES['document']['tmp_name'], $target_path)) {
+            $file_path = $relative_path;
+        } else {
+            throw new Exception("Failed to upload file");
+        }
+    }
+    
     // Insert into documents table
-    $stmt = $pdo->prepare("INSERT INTO documents (user_id, document_type, status) VALUES (?, 'affidavit', 'pending')");
-    $stmt->execute([$user_id]);
+    $stmt = $pdo->prepare("INSERT INTO documents (user_id, document_type, status, document_path) VALUES (?, 'affidavit', 'pending', ?)");
+    $stmt->execute([$user_id, $file_path]);
     $document_id = $pdo->lastInsertId();
     
     // Insert affidavit data
@@ -50,9 +64,9 @@ try {
     $pdo->commit();
     
     echo json_encode(['success' => true, 'message' => 'Affidavit submitted successfully!']);
-} catch (PDOException $e) {
+} catch (Exception $e) {
     $pdo->rollBack();
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
 }
 ?>
