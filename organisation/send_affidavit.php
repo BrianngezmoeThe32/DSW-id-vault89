@@ -21,6 +21,10 @@ try {
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
+        $affidavitDir = $uploadDir . 'affidavits/';
+        if (!file_exists($affidavitDir)) {
+            mkdir($affidavitDir, 0755, true);
+        }
         
         $filename = uniqid() . '_' . basename($_FILES['document']['name']);
         $target_path = $uploadDir . $filename;
@@ -31,6 +35,11 @@ try {
         } else {
             throw new Exception("Failed to upload file");
         }
+    }
+    if ($file_path) {
+    // Update affidavit_data with file path
+        $stmt = $pdo->prepare("UPDATE affidavit_data SET file_path = ? WHERE document_id = ?");
+        $stmt->execute([$file_path, $document_id]);
     }
     
     // Insert into documents table

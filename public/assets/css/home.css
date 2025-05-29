@@ -1178,3 +1178,198 @@ body {
   color: #999;
   margin-top: 3px !important;
 }
+/* Status Timeline Styles */
+.status-timeline {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.timeline-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.timeline-header {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.timeline-body {
+  padding: 20px;
+}
+
+.timeline-progress {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-progress:before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 25%;
+}
+
+.step-icon {
+  width: 30px;
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  color: white;
+}
+
+.progress-step.completed .step-icon {
+  background: #28a745;
+}
+
+.progress-step.current .step-icon {
+  background: #007bff;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+.progress-step.completed .step-label,
+.progress-step.current .step-label {
+  color: #343a40;
+  font-weight: 500;
+}
+
+.step-date {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.timeline-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.action-btn.download {
+  background: #28a745;
+  color: white;
+}
+
+.action-btn.feedback {
+  background: #17a2b8;
+  color: white;
+}
+
+.action-btn.upload {
+  background: #ffc107;
+  color: #212529;
+}
+
+.action-btn.contact {
+  background: #6c757d;
+  color: white;
+}
+
+.timeline-message {
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.timeline-message.alert {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.timeline-message i {
+  margin-right: 8px;
+}
+
+.no-documents {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+.no-documents i {
+  font-size: 50px;
+  margin-bottom: 15px;
+  color: #adb5bd;
+}
+
+.no-documents p {
+  margin-bottom: 20px;
+}
+
+/* Status badge colors */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background: #ffc107;
+  color: #212529;
+}
+
+.status-badge.under_review,
+.status-badge.review {
+  background: #17a2b8;
+  color: white;
+}
+
+.status-badge.approved {
+  background: #28a745;
+  color: white;
+}
+
+.status-badge.rejected,
+.status-badge.action {
+  background: #dc3545;
+  color: white;
+}

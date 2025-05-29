@@ -41,7 +41,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
 
         <div class="submenu">
             <a href="../Cards/index.html">Virtual Cards</a>
-            <a href="../public/status-check.html">Check status</a>
+            <a href="../public/status-check.php">Check status</a>
         </div>
 
         <main class="banner" style="background: url('../images/dashboard-bg.jpg') no-repeat center center/cover;">

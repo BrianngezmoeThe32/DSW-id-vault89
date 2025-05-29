@@ -26,9 +26,13 @@ if (!in_array($_FILES['certificate']['type'], $allowed_types)) {
 }
 
 // Create uploads directory if it doesn't exist
-$uploadDir = '../public/uploads/documents/certifications/';
+$uploadDir = '../public/uploads/documents/';
 if (!file_exists($uploadDir)) {
     mkdir($uploadDir, 0755, true);
+}
+$certDir = $uploadDir . 'certifications/';
+if (!file_exists($certDir)) {
+    mkdir($certDir, 0755, true);
 }
 
 $filename = uniqid() . '_' . basename($_FILES['certificate']['name']);

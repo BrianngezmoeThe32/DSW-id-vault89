@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../public/config/database.php';
+require_once '../config/database.php';
 
 // Check if admin is logged in
 if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
@@ -10,14 +10,18 @@ if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
 
 $docId = $_GET['id'] ?? null;
 if (!$docId) {
-    header("Location: admin.php");
+    header("Location: admin-dashboard.php");
     exit();
 }
 
 try {
     $stmt = $pdo->prepare("
         SELECT d.*, u.name, u.email,
-               COALESCE(cd.file_path, ad.file_path) AS document_path
+               CASE 
+                   WHEN d.document_type = 'affidavit' THEN ad.file_path
+                   WHEN d.document_type = 'certified' THEN cd.file_path
+                   ELSE d.document_path
+               END AS document_path
         FROM documents d
         JOIN users u ON d.user_id = u.id
         LEFT JOIN certified_documents cd ON d.id = cd.document_id AND d.document_type = 'certified'
@@ -31,14 +35,14 @@ try {
 }
 
 if (!$document) {
-    header("Location: admin.php");
+    header("Location: admin-dashboard.php");
     exit();
 }
 
 // Handle file viewing
 if (isset($_GET['file'])) {
     if (!empty($document['document_path'])) {
-        $filePath = '../public/' . ltrim($document['document_path'], '/');
+        $filePath = '../' . ltrim($document['document_path'], '/');
         if (file_exists($filePath)) {
             $mime = mime_content_type($filePath);
             header("Content-Type: $mime");
@@ -51,14 +55,13 @@ if (isset($_GET['file'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Document - Admin</title>
-    <link rel="stylesheet" href="../public/assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -98,6 +101,40 @@ if (isset($_GET['file'])) {
                         <p><strong>Reviewed:</strong> <?= date('d M Y H:i', strtotime($document['reviewed_at'])) ?></p>
                     <?php endif; ?>
                 </div>
+                     <!-- Add this after the document-meta section in view-document.php -->
+                <?php if ($document['document_type'] === 'affidavit'): ?>
+                    <?php
+                    // Get affidavit data
+                    $stmt = $pdo->prepare("SELECT * FROM affidavit_data WHERE document_id = ?");
+                    $stmt->execute([$docId]);
+                    $affidavit = $stmt->fetch(PDO::FETCH_ASSOC);
+                    ?>
+    
+                    <div class="affidavit-details">
+                        <h3>Affidavit Details</h3>
+                        <div class="affidavit-content">
+                            <p><strong>Name:</strong> <?= htmlspecialchars($affidavit['name'] ?? '') ?></p>
+                            <p><strong>ID Number:</strong> <?= htmlspecialchars($affidavit['id_number'] ?? '') ?></p>
+                            <p><strong>Age:</strong> <?= htmlspecialchars($affidavit['age'] ?? '') ?></p>
+                            <p><strong>Residing Address:</strong> <?= htmlspecialchars($affidavit['residing_address'] ?? '') ?></p>
+                            <p><strong>Working Address:</strong> <?= htmlspecialchars($affidavit['working_address'] ?? '') ?></p>
+                            <p><strong>Declaration:</strong></p>
+                            <div class="declaration-box"><?= nl2br(htmlspecialchars($affidavit['declaration'] ?? '')) ?></div>
+                            <p><strong>Place:</strong> <?= htmlspecialchars($affidavit['place'] ?? '') ?></p>
+                            <p><strong>Date:</strong> <?= htmlspecialchars($affidavit['date'] ?? '') ?></p>
+                            <p><strong>Time:</strong> <?= htmlspecialchars($affidavit['time'] ?? '') ?></p>
+            
+                            <?php if (!empty($affidavit['file_path'])): ?>
+                                <p><strong>Attached Document:</strong> 
+                                    <a href="view-document.php?id=<?= $docId ?>&file=1" target="_blank">
+                                    View Document
+                                    </a>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
                 
                 <div class="document-content">
                     <?php if (!empty($document['document_path'])): ?>
