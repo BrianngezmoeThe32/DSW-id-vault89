@@ -15,7 +15,7 @@
             <div class="logo">IdVaut |</div>
             <ul>
                 <li><a href="../organisation/police.html">Police Forum</a></li>
-                <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
+                <li><a href="../organisation/proofRes.php">Local Certifications</a></li>
                 <li><a href="../organisation/homeAff.html">Home Affairs</a></li>
             </ul>
             <div class="user-actions">

@@ -1,124 +1,138 @@
 <?php
-session_start();
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Database connection
-$host = "localhost";
-$db = "idvault";
-$user = "root";
-$pass = "";
+// Log file setup
+$log_file = '../logs/study_permit.log';
+if (!file_exists('../logs')) {
+    mkdir('../logs', 0777, true);
+}
+
+function writeLog($message) {
+    global $log_file;
+    $timestamp = date('Y-m-d H:i:s');
+    file_put_contents($log_file, "[$timestamp] $message\n", FILE_APPEND);
+}
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    writeLog("Starting study permit application processing");
+    
+    if (!file_exists('../config/database.php')) {
+        throw new Exception("Database configuration file not found");
+    }
+    
+    require_once '../config/database.php';
+    writeLog("Database configuration loaded");
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception("Invalid request method: " . $_SERVER['REQUEST_METHOD']);
+    }
+
+    writeLog("POST data received: " . print_r($_POST, true));
+    writeLog("FILES data received: " . print_r($_FILES, true));
+
+    // Create upload directory if it doesn't exist
+    $upload_dir = '../uploads/study_permit/';
+    if (!file_exists($upload_dir)) {
+        if (!mkdir($upload_dir, 0777, true)) {
+            throw new Exception("Failed to create upload directory");
+        }
+        writeLog("Created upload directory: $upload_dir");
+    }
 
     // Handle file uploads
-    $acceptance_letter_path = "";
-    $financial_proof_path = "";
-    
+    $accept_letter_path = '';
+    $proof_of_financial_path = '';
+
     // Process acceptance letter
-    if(isset($_FILES['acceptance_letter']) && $_FILES['acceptance_letter']['error'] == 0) {
-        $allowed = ['pdf', 'doc', 'docx'];
-        $filename = $_FILES['acceptance_letter']['name'];
-        $filetype = pathinfo($filename, PATHINFO_EXTENSION);
-        
-        if(in_array(strtolower($filetype), $allowed)) {
-            $new_filename = uniqid() . '_acceptance.' . $filetype;
-            $upload_path = '../uploads/study_permit/' . $new_filename;
-            
-            // Create directory if it doesn't exist
-            if (!file_exists('../uploads/study_permit/')) {
-                mkdir('../uploads/study_permit/', 0777, true);
-            }
-            
-            if(move_uploaded_file($_FILES['acceptance_letter']['tmp_name'], $upload_path)) {
-                $acceptance_letter_path = $upload_path;
-            }
+    if (isset($_FILES['accept_letter'])) {
+        writeLog("Processing acceptance letter upload");
+        if ($_FILES['accept_letter']['error'] !== 0) {
+            throw new Exception("Acceptance letter upload error: " . $_FILES['accept_letter']['error']);
         }
+        
+        $file_extension = strtolower(pathinfo($_FILES['accept_letter']['name'], PATHINFO_EXTENSION));
+        $new_filename = uniqid() . '_acceptance.' . $file_extension;
+        $target_path = $upload_dir . $new_filename;
+        
+        if (!move_uploaded_file($_FILES['accept_letter']['tmp_name'], $target_path)) {
+            throw new Exception("Failed to move uploaded acceptance letter");
+        }
+        $accept_letter_path = $new_filename;
+        writeLog("Acceptance letter uploaded successfully: $new_filename");
     }
 
     // Process financial proof
-    if(isset($_FILES['financial_proof']) && $_FILES['financial_proof']['error'] == 0) {
-        $allowed = ['pdf', 'doc', 'docx'];
-        $filename = $_FILES['financial_proof']['name'];
-        $filetype = pathinfo($filename, PATHINFO_EXTENSION);
+    if (isset($_FILES['proof_of_financial'])) {
+        writeLog("Processing financial proof upload");
+        if ($_FILES['proof_of_financial']['error'] !== 0) {
+            throw new Exception("Financial proof upload error: " . $_FILES['proof_of_financial']['error']);
+        }
         
-        if(in_array(strtolower($filetype), $allowed)) {
-            $new_filename = uniqid() . '_financial.' . $filetype;
-            $upload_path = '../uploads/study_permit/' . $new_filename;
-            
-            if(move_uploaded_file($_FILES['financial_proof']['tmp_name'], $upload_path)) {
-                $financial_proof_path = $upload_path;
-            }
+        $file_extension = strtolower(pathinfo($_FILES['proof_of_financial']['name'], PATHINFO_EXTENSION));
+        $new_filename = uniqid() . '_financial.' . $file_extension;
+        $target_path = $upload_dir . $new_filename;
+        
+        if (!move_uploaded_file($_FILES['proof_of_financial']['tmp_name'], $target_path)) {
+            throw new Exception("Failed to move uploaded financial proof");
+        }
+        $proof_of_financial_path = $new_filename;
+        writeLog("Financial proof uploaded successfully: $new_filename");
+    }
+
+    // Validate required fields
+    $required_fields = ['full_name', 'Id', 'date_birth', 'nationality', 'institution', 'course', 'duration', 'address', 'number', 'email'];
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            throw new Exception("Missing required field: $field");
         }
     }
 
-    // Prepare SQL statement
-    $sql = "INSERT INTO study_permit_applications (
-        fullname,
-        id_number,
-        date_of_birth,
-        nationality,
-        institution,
-        course,
-        duration,
-        acceptance_letter_path,
-        financial_proof_path,
-        address,
-        contact_number,
-        email,
-        application_date,
-        status
-    ) VALUES (
-        :fullname,
-        :id_number,
-        :dob,
-        :nationality,
-        :institution,
-        :course,
-        :duration,
-        :acceptance_letter_path,
-        :financial_proof_path,
-        :address,
-        :contact,
-        :email,
-        NOW(),
-        'pending'
-    )";
+    writeLog("All required fields validated");
 
-    $stmt = $conn->prepare($sql);
+    // Insert data into database
+    $stmt = $conn->prepare("INSERT INTO study_permit (
+        full_name, Id, date_birth, nationality, institution, 
+        course, duration, accept_letter, proof_of_financial, 
+        address, number, email
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    // Bind parameters
-    $stmt->bindParam(':fullname', $_POST['fullname']);
-    $stmt->bindParam(':id_number', $_POST['id_number']);
-    $stmt->bindParam(':dob', $_POST['dob']);
-    $stmt->bindParam(':nationality', $_POST['nationality']);
-    $stmt->bindParam(':institution', $_POST['institution']);
-    $stmt->bindParam(':course', $_POST['course']);
-    $stmt->bindParam(':duration', $_POST['duration']);
-    $stmt->bindParam(':acceptance_letter_path', $acceptance_letter_path);
-    $stmt->bindParam(':financial_proof_path', $financial_proof_path);
-    $stmt->bindParam(':address', $_POST['address']);
-    $stmt->bindParam(':contact', $_POST['contact']);
-    $stmt->bindParam(':email', $_POST['email']);
+    $params = [
+        $_POST['full_name'],
+        $_POST['Id'],
+        $_POST['date_birth'],
+        $_POST['nationality'],
+        $_POST['institution'],
+        $_POST['course'],
+        $_POST['duration'],
+        $accept_letter_path,
+        $proof_of_financial_path,
+        $_POST['address'],
+        $_POST['number'],
+        $_POST['email']
+    ];
 
-    // Execute the statement
-    $stmt->execute();
+    writeLog("Attempting database insertion with parameters: " . print_r($params, true));
 
-    // Set success message
-    $_SESSION['message'] = "Study permit application submitted successfully!";
-    $_SESSION['message_type'] = "success";
-    
-    // Redirect back to study permit application page
-    header("Location: studyPermit.php");
-    exit();
+    if (!$stmt->execute($params)) {
+        throw new Exception("Database insertion failed: " . implode(" ", $stmt->errorInfo()));
+    }
 
-} catch(PDOException $e) {
-    // Set error message
-    $_SESSION['message'] = "Error: " . $e->getMessage();
-    $_SESSION['message_type'] = "error";
-    
-    // Redirect back to study permit application page
-    header("Location: studyPermit.php");
-    exit();
+    writeLog("Database insertion successful");
+    echo json_encode(['success' => true, 'message' => 'Study permit application submitted successfully']);
+
+} catch (Exception $e) {
+    writeLog("ERROR: " . $e->getMessage());
+    writeLog("Stack trace: " . $e->getTraceAsString());
+    echo json_encode([
+        'success' => false, 
+        'message' => 'Error submitting application: ' . $e->getMessage(),
+        'debug_info' => [
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ]
+    ]);
 }
 ?> 

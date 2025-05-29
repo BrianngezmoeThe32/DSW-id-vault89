@@ -1,0 +1,66 @@
+[2025-05-29 20:03:45] Starting study permit application processing
+[2025-05-29 20:03:45] ERROR: Database configuration file not found
+[2025-05-29 20:03:45] Stack trace: #0 {main}
+[2025-05-29 20:04:19] Starting study permit application processing
+[2025-05-29 20:04:19] Database configuration loaded
+[2025-05-29 20:04:19] POST data received: Array
+(
+    [full_name] => Tumelo Mpikashe
+    [Id] => 0501235122089
+    [date_birth] => 2005-01-23
+    [nationality] => South africa
+    [institution] => UJ
+    [course] => IT
+    [duration] => 4 years
+    [address] => azile012@outlook.com
+    [number] => 0681787021
+    [email] => azile012@outlook.com
+)
+
+[2025-05-29 20:04:19] FILES data received: Array
+(
+    [accept_letter] => Array
+        (
+            [name] => Graded Lab 8 (1).pdf
+            [full_path] => Graded Lab 8 (1).pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xam\tmp\php974C.tmp
+            [error] => 0
+            [size] => 222237
+        )
+
+    [proof_of_financial] => Array
+        (
+            [name] => CMN02A1 - Assignment 2 - Due 23.05.2025 v1.0 (3).pdf
+            [full_path] => CMN02A1 - Assignment 2 - Due 23.05.2025 v1.0 (3).pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xam\tmp\php974D.tmp
+            [error] => 0
+            [size] => 692518
+        )
+
+)
+
+[2025-05-29 20:04:19] Created upload directory: ../uploads/study_permit/
+[2025-05-29 20:04:19] Processing acceptance letter upload
+[2025-05-29 20:04:19] Acceptance letter uploaded successfully: 6838a1a37b49e_acceptance.pdf
+[2025-05-29 20:04:19] Processing financial proof upload
+[2025-05-29 20:04:19] Financial proof uploaded successfully: 6838a1a37b884_financial.pdf
+[2025-05-29 20:04:19] All required fields validated
+[2025-05-29 20:04:19] Attempting database insertion with parameters: Array
+(
+    [0] => Tumelo Mpikashe
+    [1] => 0501235122089
+    [2] => 2005-01-23
+    [3] => South africa
+    [4] => UJ
+    [5] => IT
+    [6] => 4 years
+    [7] => 6838a1a37b49e_acceptance.pdf
+    [8] => 6838a1a37b884_financial.pdf
+    [9] => azile012@outlook.com
+    [10] => 0681787021
+    [11] => azile012@outlook.com
+)
+
+[2025-05-29 20:04:19] Database insertion successful
