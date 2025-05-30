@@ -18,13 +18,13 @@ function writeLog($message) {
 try {
     writeLog("Starting study permit application processing");
     
-    if (!file_exists('../config/database.php')) {
+    if (!file_exists('../public/config/database.php')) {
         throw new Exception("Database configuration file not found");
     }
     
-    require_once '../config/database.php';
+    require_once '../public/config/database.php';
     writeLog("Database configuration loaded");
-
+                                                                                                        
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception("Invalid request method: " . $_SERVER['REQUEST_METHOD']);
     }
@@ -46,17 +46,17 @@ try {
     $proof_of_financial_path = '';
 
     // Process acceptance letter
-    if (isset($_FILES['accept_letter'])) {
+    if (isset($_FILES['acceptance_letter'])) {
         writeLog("Processing acceptance letter upload");
-        if ($_FILES['accept_letter']['error'] !== 0) {
-            throw new Exception("Acceptance letter upload error: " . $_FILES['accept_letter']['error']);
+        if ($_FILES['acceptance_letter']['error'] !== 0) {
+            throw new Exception("Acceptance letter upload error: " . $_FILES['acceptance_letter']['error']);
         }
         
-        $file_extension = strtolower(pathinfo($_FILES['accept_letter']['name'], PATHINFO_EXTENSION));
+        $file_extension = strtolower(pathinfo($_FILES['acceptance_letter']['name'], PATHINFO_EXTENSION));
         $new_filename = uniqid() . '_acceptance.' . $file_extension;
         $target_path = $upload_dir . $new_filename;
         
-        if (!move_uploaded_file($_FILES['accept_letter']['tmp_name'], $target_path)) {
+        if (!move_uploaded_file($_FILES['acceptance_letter']['tmp_name'], $target_path)) {
             throw new Exception("Failed to move uploaded acceptance letter");
         }
         $accept_letter_path = $new_filename;
@@ -64,17 +64,17 @@ try {
     }
 
     // Process financial proof
-    if (isset($_FILES['proof_of_financial'])) {
+    if (isset($_FILES['financial_proof'])) {
         writeLog("Processing financial proof upload");
-        if ($_FILES['proof_of_financial']['error'] !== 0) {
-            throw new Exception("Financial proof upload error: " . $_FILES['proof_of_financial']['error']);
+        if ($_FILES['financial_proof']['error'] !== 0) {
+            throw new Exception("Financial proof upload error: " . $_FILES['financial_proof']['error']);
         }
         
-        $file_extension = strtolower(pathinfo($_FILES['proof_of_financial']['name'], PATHINFO_EXTENSION));
+        $file_extension = strtolower(pathinfo($_FILES['financial_proof']['name'], PATHINFO_EXTENSION));
         $new_filename = uniqid() . '_financial.' . $file_extension;
         $target_path = $upload_dir . $new_filename;
         
-        if (!move_uploaded_file($_FILES['proof_of_financial']['tmp_name'], $target_path)) {
+        if (!move_uploaded_file($_FILES['financial_proof']['tmp_name'], $target_path)) {
             throw new Exception("Failed to move uploaded financial proof");
         }
         $proof_of_financial_path = $new_filename;
@@ -82,7 +82,7 @@ try {
     }
 
     // Validate required fields
-    $required_fields = ['full_name', 'Id', 'date_birth', 'nationality', 'institution', 'course', 'duration', 'address', 'number', 'email'];
+    $required_fields = ['fullname', 'id_number', 'dob', 'nationality', 'institution', 'course', 'duration', 'address', 'contact', 'email'];
     foreach ($required_fields as $field) {
         if (empty($_POST[$field])) {
             throw new Exception("Missing required field: $field");
@@ -93,15 +93,15 @@ try {
 
     // Insert data into database
     $stmt = $conn->prepare("INSERT INTO study_permit (
-        full_name, Id, date_birth, nationality, institution, 
+        full_name, Id, date_birth, nationality, institution,  
         course, duration, accept_letter, proof_of_financial, 
         address, number, email
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $params = [
-        $_POST['full_name'],
-        $_POST['Id'],
-        $_POST['date_birth'],
+        $_POST['fullname'],
+        $_POST['id_number'],
+        $_POST['dob'],
         $_POST['nationality'],
         $_POST['institution'],
         $_POST['course'],
@@ -109,7 +109,7 @@ try {
         $accept_letter_path,
         $proof_of_financial_path,
         $_POST['address'],
-        $_POST['number'],
+        $_POST['contact'],
         $_POST['email']
     ];
 
@@ -135,4 +135,4 @@ try {
         ]
     ]);
 }
-?> 
+?>

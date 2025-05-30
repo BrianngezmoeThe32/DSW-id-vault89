@@ -64,3 +64,472 @@
 )
 
 [2025-05-29 20:04:19] Database insertion successful
+[2025-05-30 13:05:03] Starting study permit application processing
+[2025-05-30 13:05:03] Database configuration loaded
+[2025-05-30 13:05:03] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => kwagggaA
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:05:03] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Document (2).docx
+            [full_path] => Document (2).docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpC1E9.tmp
+            [error] => 0
+            [size] => 13724
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpC1EA.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+)
+
+[2025-05-30 13:05:03] ERROR: Missing required field: full_name
+[2025-05-30 13:05:03] Stack trace: #0 {main}
+[2025-05-30 13:07:45] Starting study permit application processing
+[2025-05-30 13:07:45] Database configuration loaded
+[2025-05-30 13:07:45] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => kwagggaA
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:07:45] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Document (2).docx
+            [full_path] => Document (2).docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\php3C13.tmp
+            [error] => 0
+            [size] => 13724
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php3C14.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+)
+
+[2025-05-30 13:07:45] ERROR: Missing required field: full_name
+[2025-05-30 13:07:45] Stack trace: #0 {main}
+[2025-05-30 13:08:28] Starting study permit application processing
+[2025-05-30 13:08:28] Database configuration loaded
+[2025-05-30 13:08:28] ERROR: Invalid request method: GET
+[2025-05-30 13:08:28] Stack trace: #0 {main}
+[2025-05-30 13:09:54] Starting study permit application processing
+[2025-05-30 13:09:54] Database configuration loaded
+[2025-05-30 13:09:54] ERROR: Invalid request method: GET
+[2025-05-30 13:09:54] Stack trace: #0 {main}
+[2025-05-30 13:09:55] Starting study permit application processing
+[2025-05-30 13:09:55] Database configuration loaded
+[2025-05-30 13:09:55] ERROR: Invalid request method: GET
+[2025-05-30 13:09:55] Stack trace: #0 {main}
+[2025-05-30 13:10:02] Starting study permit application processing
+[2025-05-30 13:10:02] Database configuration loaded
+[2025-05-30 13:10:02] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => kwagggaA
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:10:02] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Document (2).docx
+            [full_path] => Document (2).docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\php53D9.tmp
+            [error] => 0
+            [size] => 13724
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php53DA.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+)
+
+[2025-05-30 13:10:02] ERROR: Missing required field: full_name
+[2025-05-30 13:10:02] Stack trace: #0 {main}
+[2025-05-30 13:10:34] Starting study permit application processing
+[2025-05-30 13:10:34] Database configuration loaded
+[2025-05-30 13:10:34] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => biybveundo lkjdlbx
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:10:34] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpCF06.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Document (2).docx
+            [full_path] => Document (2).docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpCF17.tmp
+            [error] => 0
+            [size] => 13724
+        )
+
+)
+
+[2025-05-30 13:10:34] ERROR: Missing required field: full_name
+[2025-05-30 13:10:34] Stack trace: #0 {main}
+[2025-05-30 13:11:59] Starting study permit application processing
+[2025-05-30 13:11:59] Database configuration loaded
+[2025-05-30 13:11:59] ERROR: Invalid request method: GET
+[2025-05-30 13:11:59] Stack trace: #0 {main}
+[2025-05-30 13:12:11] Starting study permit application processing
+[2025-05-30 13:12:11] Database configuration loaded
+[2025-05-30 13:12:11] ERROR: Invalid request method: GET
+[2025-05-30 13:12:11] Stack trace: #0 {main}
+[2025-05-30 13:16:16] Starting study permit application processing
+[2025-05-30 13:16:16] Database configuration loaded
+[2025-05-30 13:16:16] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => yrxctugvhkbjln;m/<::?k,j
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:16:16] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpA83.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpA84.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+)
+
+[2025-05-30 13:16:16] ERROR: Missing required field: full_name
+[2025-05-30 13:16:16] Stack trace: #0 {main}
+[2025-05-30 13:29:49] Starting study permit application processing
+[2025-05-30 13:29:49] Database configuration loaded
+[2025-05-30 13:29:49] ERROR: Invalid request method: GET
+[2025-05-30 13:29:49] Stack trace: #0 {main}
+[2025-05-30 13:30:16] Starting study permit application processing
+[2025-05-30 13:30:16] Database configuration loaded
+[2025-05-30 13:30:16] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => gvhbkjnl;m/., n
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:30:16] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpDAFA.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => 222231492_MTSWENE_ASS1.pdf
+            [full_path] => 222231492_MTSWENE_ASS1.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpDB29.tmp
+            [error] => 0
+            [size] => 53781
+        )
+
+)
+
+[2025-05-30 13:30:16] Processing acceptance letter upload
+[2025-05-30 13:30:16] Acceptance letter uploaded successfully: 683996c8c5d0f_acceptance.docx
+[2025-05-30 13:30:16] Processing financial proof upload
+[2025-05-30 13:30:16] Financial proof uploaded successfully: 683996c8c6a96_financial.pdf
+[2025-05-30 13:30:16] All required fields validated
+[2025-05-30 13:33:13] Starting study permit application processing
+[2025-05-30 13:33:13] Database configuration loaded
+[2025-05-30 13:33:13] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => gvhbkjnl;m/., n
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:33:13] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\php8E15.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => 222231492_MTSWENE_ASS1.pdf
+            [full_path] => 222231492_MTSWENE_ASS1.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php8E26.tmp
+            [error] => 0
+            [size] => 53781
+        )
+
+)
+
+[2025-05-30 13:33:13] Processing acceptance letter upload
+[2025-05-30 13:33:13] Acceptance letter uploaded successfully: 68399779abb5f_acceptance.docx
+[2025-05-30 13:33:13] Processing financial proof upload
+[2025-05-30 13:33:13] Financial proof uploaded successfully: 68399779ac6fb_financial.pdf
+[2025-05-30 13:33:13] All required fields validated
+[2025-05-30 13:33:20] Starting study permit application processing
+[2025-05-30 13:33:20] Database configuration loaded
+[2025-05-30 13:33:20] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => gvhbkjnl;m/., n
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:33:20] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpA7D9.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => 222231492_MTSWENE_ASS1.pdf
+            [full_path] => 222231492_MTSWENE_ASS1.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpA7F9.tmp
+            [error] => 0
+            [size] => 53781
+        )
+
+)
+
+[2025-05-30 13:33:20] Processing acceptance letter upload
+[2025-05-30 13:33:20] Acceptance letter uploaded successfully: 683997804c3e5_acceptance.docx
+[2025-05-30 13:33:20] Processing financial proof upload
+[2025-05-30 13:33:20] Financial proof uploaded successfully: 683997804cd63_financial.pdf
+[2025-05-30 13:33:20] All required fields validated
+[2025-05-30 13:39:17] Starting study permit application processing
+[2025-05-30 13:39:17] Database configuration loaded
+[2025-05-30 13:39:17] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => gvhbkjnl;m/., n
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 13:39:17] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\php1B5D.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => 222231492_MTSWENE_ASS1.pdf
+            [full_path] => 222231492_MTSWENE_ASS1.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php1B5E.tmp
+            [error] => 0
+            [size] => 53781
+        )
+
+)
+
+[2025-05-30 13:39:17] Processing acceptance letter upload
+[2025-05-30 13:39:17] Acceptance letter uploaded successfully: 683998e584a8e_acceptance.docx
+[2025-05-30 13:39:17] Processing financial proof upload
+[2025-05-30 13:39:17] Financial proof uploaded successfully: 683998e585723_financial.pdf
+[2025-05-30 13:39:17] All required fields validated
+[2025-05-30 14:25:38] Starting study permit application processing
+[2025-05-30 14:25:38] Database configuration loaded
+[2025-05-30 14:25:38] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => gvhbkjnl;m/., n
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-30 14:25:38] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Mtswene Brian Mongezi.docx
+            [full_path] => Mtswene Brian Mongezi.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\php8B05.tmp
+            [error] => 0
+            [size] => 23453
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => 222231492_MTSWENE_ASS1.pdf
+            [full_path] => 222231492_MTSWENE_ASS1.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php8B06.tmp
+            [error] => 0
+            [size] => 53781
+        )
+
+)
+
+[2025-05-30 14:25:38] Processing acceptance letter upload
+[2025-05-30 14:25:38] Acceptance letter uploaded successfully: 6839a3c29e0bf_acceptance.docx
+[2025-05-30 14:25:38] Processing financial proof upload
+[2025-05-30 14:25:38] Financial proof uploaded successfully: 6839a3c29ea7a_financial.pdf
+[2025-05-30 14:25:38] All required fields validated
+[2025-05-30 14:27:18] Starting study permit application processing
+[2025-05-30 14:27:18] ERROR: SQLSTATE[HY000] [1045] Access denied for user 'username'@'localhost' (using password: YES)
+[2025-05-30 14:27:18] Stack trace: #0 C:\xampp\htdocs\todayDSW\DSW-website\public\config\database.php(17): PDO->__construct('mysql:host=loca...', 'username', Object(SensitiveParameterValue))
+#1 C:\xampp\htdocs\todayDSW\DSW-website\organisation\process_study_permit.php(25): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+[2025-05-30 14:27:30] Starting study permit application processing
+[2025-05-30 14:27:30] ERROR: SQLSTATE[HY000] [1045] Access denied for user 'username'@'localhost' (using password: YES)
+[2025-05-30 14:27:30] Stack trace: #0 C:\xampp\htdocs\todayDSW\DSW-website\public\config\database.php(17): PDO->__construct('mysql:host=loca...', 'username', Object(SensitiveParameterValue))
+#1 C:\xampp\htdocs\todayDSW\DSW-website\organisation\process_study_permit.php(25): require_once('C:\\xampp\\htdocs...')
+#2 {main}

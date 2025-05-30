@@ -34,8 +34,8 @@ try {
     }
 
     // Prepare SQL statement
-    $sql = "INSERT INTO passport_applications (
-        fullname, 
+    $sql = "INSERT INTO passport(
+        full_name, 
         id_number, 
         date_of_birth, 
         nationality, 

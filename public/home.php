@@ -40,7 +40,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
         </nav>
 
         <div class="submenu">
-            <a href="../Cards/index.html">Virtual Cards</a>
+            
             <a href="../public/status-check.php">Check status</a>
         </div>
 
