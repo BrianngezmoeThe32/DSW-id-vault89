@@ -6,16 +6,32 @@
     <title>Idvault online</title>
     <link rel="stylesheet" href="../public/assets/css/firstPage.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
-
+    <style>
+        .top-bar {
+            display: block;
+            transition: display 0.3s ease;
+        }
         
+        .top-bar.hidden {
+            display: none;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <header class="top-bar">
-            <p>We use cookies to optimise the user experience. <a href="#">Tell me more</a> | <a href="#">Dismiss</a></p>
+        <header class="top-bar" id="cookieNotice">
+            <p>We use cookies to optimise the user experience. <a href="cookie-policy.html">Tell me more</a> | <a href="#" onclick="dismissCookieNotice()">Dismiss</a></p>
         </header>
         <nav class="navbar">
-            <div class="logo" img="" alt="logo">IdVaut   |</div>
+            <div class="logo" img="" alt="logo">IdVault   |</div>
             <ul>
                 <li><a href="../public/auth/login.html">Police Forum</a></li>
                 <li><a href="../public/auth/login.html">Local Certifications</a></li>
@@ -56,7 +72,7 @@
               
               <div class="offer-box" style="background-image:   url('');">
                 <h3>Access to Essential Documents</h3>
-                <p>  We’ve integrated access to critical external Documents, such as:</p>
+                <p>  We've integrated access to critical external Documents, such as:</p>
                 <ul>
                   <li>Passport</li>
                   <li> Visa</li>
@@ -108,39 +124,39 @@
                 <div>
                     <h3>Social</h3>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/YourPageName" target="_blank">
+                        <a href="https://web.facebook.com/profile.php?id=61575177156472" target="_blank"></a>
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <i class="fab fa-x-twitter"></i>
-                        <a href="http://www.linkedin.com/in/id-vault-046713360" target="_blank">
+                        <a href="https://x.com/idvault_" target="_blank">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/id-vault-046713360" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
-
                         </a>
-                        <a href="www.linkedin.com/in/id-vault-046713360" target="_blank">
-                            <i class="fab fa-blogger"></i>
-                        </a>
+                        <a href="https://www.instagram.com/idvault_?igsh=NWRjamg1bGI5cnYw" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                         </a>
                         
                     </div>
                 </div>
                 <div>
                     <h3>Useful Tools</h3>
                     <ul>
-                        <li><a href="#">Digital Certification</a></li>
+                
                         <li><a href="#">rates and fees</a></li>
-                        <li><a href="#">Latest offers</a></li>
-                        <li><a href="#">Find a branch</a></li>
-                        <li><a href="#">Safety and security</a></li>
+                        <li><a href="latest-offers.html">Latest offers</a></li>
+                        <li><a href="find-branch/find-branch.html">Find a branch</a></li>
+                        <li><a href="safety-security.html">Safety and security</a></li>
                         
                     </ul>
                 </div>
                 <div>
                     <h3>Who we are</h3>
                     <ul>
-                        <li><a href="#">About Idvault</a></li>
+                        <li><a href="about-us.html">About Idvault</a></li>
                         <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Citizenship</a></li>
                         <li><a href="#">Media Centre</a></li>
-                        <li><a href="#">Sponsorship</a></li>
+                        <li><a href="sponsorships.html">Sponsorship</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
@@ -184,5 +200,20 @@
         </p>
         <div class="footer-border"></div>
       </footer>
+
+    <script>
+        function dismissCookieNotice() {
+            const cookieNotice = document.getElementById('cookieNotice');
+            cookieNotice.classList.add('hidden');
+            sessionStorage.setItem('cookieNoticeDismissed', 'true');
+        }
+
+        // Check if the notice was dismissed in this session
+        window.onload = function() {
+            if (sessionStorage.getItem('cookieNoticeDismissed') === 'true') {
+                document.getElementById('cookieNotice').classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>

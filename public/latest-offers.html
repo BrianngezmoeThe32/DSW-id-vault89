@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Offers - IDvault</title>
+    <link rel="stylesheet" href="assets/css/firstPage.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .offers-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .offer-card h3 {
+            color: #ff1212;
+            margin-bottom: 15px;
+        }
+
+        .offer-card .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .offer-card .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .offer-card .features li {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .offer-card .cta-button {
+            background: #ff1212;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .offer-card .cta-button:hover {
+            background: #cc0000;
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="offers-content">
+            <h1>Latest Offers</h1>
+            <p class="subtitle">Special Deals and Promotions</p>
+
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <h3>Student Package</h3>
+                    <p>Special rates for students</p>
+                    <div class="price">20% OFF</div>
+                    <ul class="features">
+                        <li>Priority processing</li>
+                        <li>Free document verification</li>
+                        <li>Extended support hours</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </div>
+
+                <div class="offer-card">
+                    <h3>Family Bundle</h3>
+                    <p>Complete document solutions for families</p>
+                    <div class="price">15% OFF</div>
+                    <ul class="features">
+                        <li>3+ documents</li>
+                        <li>Free consultation</li>
+                        <li>Group processing</li>
+                    </ul>
+                    <button class="cta-button">Learn More</button>
+                </div>
+
+                <div class="offer-card">
+                    <h3>Business Solutions</h3>
+                    <p>Comprehensive document management</p>
+                    <div class="price">25% OFF</div>
+                    <ul class="features">
+                        <li>Bulk processing</li>
+                        <li>Dedicated support</li>
+                        <li>Custom solutions</li>
+                    </ul>
+                    <button class="cta-button">Contact Us</button>
+                </div>
+            </div>
+
+            <div class="terms">
+                <p>* Offers are subject to availability and may change without notice. Terms and conditions apply.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="terms.html">Terms Of Use</a>
+            <span>|</span>
+            <a href="#">Idvault Regulations</a>
+            <span>|</span>
+            <a href="#">Privacy Statement</a>
+            <span>|</span>
+            <a href="#">Security Centre</a>
+        </div>
+        <p class="footer-text">
+            © Copyright. Idvault Limited, Registration number 2025/03/06. All rights reserved |
+            <a href="#">Authorised online Documentation Services Provider</a>
+        </p>
+        <div class="footer-border"></div>
+    </footer>
+</body>
+</html>
