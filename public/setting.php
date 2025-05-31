@@ -21,7 +21,7 @@ $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 
 // Fetch additional user info from database
-$stmt = $conn->prepare("SELECT phone, address, profile_image FROM users WHERE id = ?");
+$stmt = $conn->prepare("SELECT phone, address, profile_image, created_at FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -49,6 +49,30 @@ if (!$preferences) {
     $stmt->execute();
     $result = $stmt->get_result();
     $preferences = $result->fetch_assoc();
+    $stmt->close();
+}
+
+// Fetch user documents
+$stmt = $conn->prepare("SELECT id_document, proof_residence, affidavit FROM user_documents WHERE user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user_documents = $result->fetch_assoc();
+$stmt->close();
+
+// If no documents exist, create empty record
+if (!$user_documents) {
+    $stmt = $conn->prepare("INSERT INTO user_documents (user_id) VALUES (?)");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->close();
+    
+    // Fetch again
+    $stmt = $conn->prepare("SELECT id_document, proof_residence, affidavit FROM user_documents WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user_documents = $result->fetch_assoc();
     $stmt->close();
 }
 
@@ -116,6 +140,82 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $preferences_success = "Preferences updated successfully!";
     }
+    elseif (isset($_POST['update_documents'])) {
+        // Handle document uploads
+        $target_dir = "../uploads/user_documents/";
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+        
+        $update_fields = array();
+        $params = array();
+        $types = "";
+        
+        // Process ID document
+        if (isset($_FILES['id_document']) && $_FILES['id_document']['error'] === UPLOAD_ERR_OK) {
+            $file_extension = pathinfo($_FILES['id_document']['name'], PATHINFO_EXTENSION);
+            $target_file = $target_dir . $user_id . '_id_' . time() . '.' . $file_extension;
+            
+            if (move_uploaded_file($_FILES['id_document']['tmp_name'], $target_file)) {
+                $update_fields[] = "id_document = ?";
+                $params[] = $target_file;
+                $types .= "s";
+            } else {
+                $documents_error = "Failed to upload ID document";
+            }
+        }
+        
+        // Process proof of residence
+        if (isset($_FILES['proof_residence']) && $_FILES['proof_residence']['error'] === UPLOAD_ERR_OK) {
+            $file_extension = pathinfo($_FILES['proof_residence']['name'], PATHINFO_EXTENSION);
+            $target_file = $target_dir . $user_id . '_residence_' . time() . '.' . $file_extension;
+            
+            if (move_uploaded_file($_FILES['proof_residence']['tmp_name'], $target_file)) {
+                $update_fields[] = "proof_residence = ?";
+                $params[] = $target_file;
+                $types .= "s";
+            } else {
+                $documents_error = "Failed to upload proof of residence";
+            }
+        }
+        
+        // Process affidavit
+        if (isset($_FILES['affidavit']) && $_FILES['affidavit']['error'] === UPLOAD_ERR_OK) {
+            $file_extension = pathinfo($_FILES['affidavit']['name'], PATHINFO_EXTENSION);
+            $target_file = $target_dir . $user_id . '_affidavit_' . time() . '.' . $file_extension;
+            
+            if (move_uploaded_file($_FILES['affidavit']['tmp_name'], $target_file)) {
+                $update_fields[] = "affidavit = ?";
+                $params[] = $target_file;
+                $types .= "s";
+            } else {
+                $documents_error = "Failed to upload affidavit";
+            }
+        }
+        
+        // Update database if we have files to update
+        if (!empty($update_fields)) {
+            $sql = "UPDATE user_documents SET " . implode(", ", $update_fields) . " WHERE user_id = ?";
+            $params[] = $user_id;
+            $types .= "i";
+            
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param($types, ...$params);
+            $stmt->execute();
+            $stmt->close();
+            
+            if (empty($documents_error)) {
+                $documents_success = "Documents uploaded successfully!";
+                // Refresh documents data
+                $stmt = $conn->prepare("SELECT id_document, proof_residence, affidavit FROM user_documents WHERE user_id = ?");
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $user_documents = $result->fetch_assoc();
+                $stmt->close();
+            }
+        }
+    }
     
     // Handle profile image upload
     if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
@@ -148,12 +248,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$conn->close();
-
 // Split name into first and last
 $name_parts = explode(' ', $user_name);
 $first_name = $name_parts[0] ?? '';
 $last_name = $name_parts[1] ?? '';
+
+// Close the database connection after all operations are complete
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -181,6 +282,27 @@ $last_name = $name_parts[1] ?? '';
         .strong { width: 100%; background: #00cc66; }
         .success-message { color: green; margin: 10px 0; }
         .error-message { color: red; margin: 10px 0; }
+        .document-upload {
+            margin-bottom: 20px;
+        }
+        .document-upload label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .document-upload input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .document-upload a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .document-upload a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -195,13 +317,12 @@ $last_name = $name_parts[1] ?? '';
             <div class="user-actions">
                 <i class="fa-solid fa-magnifying-glass"></i><a href="../search/index.html">Search</a>
                 <i class="fa-solid fa-user"></i><span><?php echo htmlspecialchars($user_name); ?></span>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="FirstPage.html
-                ">Log out</a>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="FirstPage.html">Log out</a>
             </div>
         </nav>
 
         <div class="submenu">
-            <a href="../Cards/index.html">Virtual Cards</a>
+            <a href="../public/home.php">Home</a>
             <a href="../public/status-check.html">Check status</a>
         </div>
 
@@ -244,6 +365,7 @@ $last_name = $name_parts[1] ?? '';
                 <button class="tab-btn active" data-tab="personal">Personal Information</button>
                 <button class="tab-btn" data-tab="security">Security</button>
                 <button class="tab-btn" data-tab="preferences">Preferences</button>
+                <button class="tab-btn" data-tab="documents">Documents</button>
             </div>
 
             <div class="tab-content active" id="personal-tab">
@@ -341,17 +463,54 @@ $last_name = $name_parts[1] ?? '';
                     <button type="submit" name="update_preferences" class="save-btn">Save Preferences</button>
                 </form>
             </div>
+
+            <div class="tab-content" id="documents-tab">
+                <form class="settings-form" method="post" enctype="multipart/form-data">
+                    <?php if (isset($documents_success)): ?>
+                        <div class="success-message"><?php echo $documents_success; ?></div>
+                    <?php endif; ?>
+                    <?php if (isset($documents_error)): ?>
+                        <div class="error-message"><?php echo $documents_error; ?></div>
+                    <?php endif; ?>
+                    
+                    <div class="form-group">
+                        <label for="id-document">ID Document (Passport/Driver's License)</label>
+                        <input type="file" id="id-document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" />
+                        <?php if (!empty($user_documents['id_document'])): ?>
+                            <p>Current file: <a href="<?php echo $user_documents['id_document']; ?>" target="_blank">View ID Document</a></p>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="proof-residence">Proof of Residence (Utility Bill/Bank Statement)</label>
+                        <input type="file" id="proof-residence" name="proof_residence" accept=".pdf,.jpg,.jpeg,.png" />
+                        <?php if (!empty($user_documents['proof_residence'])): ?>
+                            <p>Current file: <a href="<?php echo $user_documents['proof_residence']; ?>" target="_blank">View Proof of Residence</a></p>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="affidavit">Affidavit to Operate</label>
+                        <input type="file" id="affidavit" name="affidavit" accept=".pdf,.jpg,.jpeg,.png" />
+                        <?php if (!empty($user_documents['affidavit'])): ?>
+                            <p>Current file: <a href="<?php echo $user_documents['affidavit']; ?>" target="_blank">View Affidavit</a></p>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <button type="submit" name="update_documents" class="save-btn">Upload Documents</button>
+                </form>
+            </div>
         </section>
 
-        <!-- Footer (same as home page) -->
+        <!-- Footer -->
         <div class="container">
             <div class="footer">
-                <!-- Footer content same as home page -->
+                <!-- Footer content -->
             </div>
         </div>
 
         <footer class="site-footer">
-            <!-- Footer content same as home page -->
+            <!-- Footer content -->
         </footer>
     </div>
     <script>

@@ -53,7 +53,7 @@ try {
 
         <div class="submenu">
             <a href="status-check.php" class="active">Check status</a>
-            <a href="my-documents.php">My Documents</a>
+            <a href="../public/auth/my_documents.php">My Documents</a>
         </div>
 
         <main class="banner">

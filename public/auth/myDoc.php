@@ -17,7 +17,7 @@ $stmt->execute([$_SESSION['user_id']]);
 $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!-- Use your myDoc.html template but make it dynamic -->
+
 <div class="documents-list">
     <?php foreach ($documents as $doc): ?>
     <div class="document-card">

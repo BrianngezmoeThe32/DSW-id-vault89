@@ -59,7 +59,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
                 <div class="offer-box" style="background-image: url('../images/account-bg.jpg')">
                     <h3>My Documents</h3>
                     <p>View, download, or share your essential documents anytime.</p>
-                    <button onclick="window.location.href='../public/auth/myDoc.html'" class="info-box-button">Go to Documents</button>
+                    <button onclick="window.location.href='../public/auth/my_documents.php'" class="info-box-button">Go to Documents</button>
                 </div>
 
                 <div class="offer-box" style="background-image: url('../images/notifications-bg.jpg')">

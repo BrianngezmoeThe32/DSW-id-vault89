@@ -533,3 +533,48 @@
 [2025-05-30 14:27:30] Stack trace: #0 C:\xampp\htdocs\todayDSW\DSW-website\public\config\database.php(17): PDO->__construct('mysql:host=loca...', 'username', Object(SensitiveParameterValue))
 #1 C:\xampp\htdocs\todayDSW\DSW-website\organisation\process_study_permit.php(25): require_once('C:\\xampp\\htdocs...')
 #2 {main}
+[2025-05-31 12:02:24] Starting study permit application processing
+[2025-05-31 12:02:24] Database configuration loaded
+[2025-05-31 12:02:24] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => biybveundo lkjdlbx
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-05-31 12:02:24] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => Document.docx
+            [full_path] => Document.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\xampp\tmp\phpC2A4.tmp
+            [error] => 0
+            [size] => 12235
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => Tutorial.pdf
+            [full_path] => Tutorial.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\phpC2B4.tmp
+            [error] => 0
+            [size] => 159646
+        )
+
+)
+
+[2025-05-31 12:02:24] Processing acceptance letter upload
+[2025-05-31 12:02:24] Acceptance letter uploaded successfully: 683ad3b03d56e_acceptance.docx
+[2025-05-31 12:02:24] Processing financial proof upload
+[2025-05-31 12:02:24] Financial proof uploaded successfully: 683ad3b040c58_financial.pdf
+[2025-05-31 12:02:24] All required fields validated
