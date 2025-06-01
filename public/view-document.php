@@ -434,37 +434,54 @@ if (isset($_GET['file'])) {
 
     <script>
     // Handle approval/rejection
+    // Handle approval/rejection for all buttons
     document.querySelectorAll('.approve, .reject').forEach(btn => {
         btn.addEventListener('click', async function() {
             const docId = this.dataset.docId;
             const action = this.classList.contains('approve') ? 'approve' : 'reject';
-            const actionText = action === 'approve' ? 'approve' : 'reject';
-            
-            if (!confirm(`Are you sure you want to ${actionText} this document?`)) {
+        
+            if (!confirm(`Are you sure you want to ${action} this document?`)) {
                 return;
             }
-            
+        
             try {
+            // Use absolute path to ensure the request goes to the right place
                 const response = await fetch('handle_document.php', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ doc_id: docId, action: action })
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        doc_id: docId, 
+                        action: action 
+                    })
                 });
-                
+            
+                if (!response.ok) {
+                    const error = await response.json().catch(() => ({}));
+                    throw new Error(error.message || 'Network response was not ok');
+                }
+            
                 const result = await response.json();
-                
+            
                 if (result.success) {
-                    alert(`Document ${actionText}d successfully!`);
+                    alert(`Document ${action}d successfully!`);
                     location.reload();
                 } else {
                     alert(`Error: ${result.message}`);
+                    if (result.debug_info) {
+                        console.error('Debug info:', result.debug_info);
+                    }
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred while processing your request.');
+                alert(`Error: ${error.message}`);
             }
         });
     });
+    
+   
     </script>
 </body>
 </html>
