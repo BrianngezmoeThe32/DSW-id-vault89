@@ -1,6 +1,6 @@
 <?php
 require_once '../config/database.php';
-require_once 'admin_auth.php';
+require_once 'admin-dashboard.php';
 
 // Get filter from query string
 $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';

@@ -1,15 +1,39 @@
+/* --- Base Styles & Typography --- */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  /* Using a more modern and readable sans-serif font stack */
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   display: grid;
   grid-template-rows: auto auto auto 1fr auto;
   grid-template-columns: 1fr;
   text-align: center;
   background-color: #f8f8f8;
+  color: #333; /* Default text color for better readability */
+  line-height: 1.6; /* Improved readability for body text */
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif; /* A more professional heading font */
+  color: #222;
+  margin-top: 0; /* Resetting default margins */
+  margin-bottom: 0.5em; /* Consistent spacing below headings */
+}
+
+a {
+  text-decoration: none;
+  color: #007bff; /* A standard blue for links */
+  transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* --- Layout Components --- */
 .top-bar {
   background: #eee;
-  padding: 10px;
+  padding: 10px 20px; /* Increased horizontal padding */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .navbar {
@@ -17,8 +41,9 @@ body {
   grid-template-columns: auto 1fr auto;
   background: white;
   color: black;
-  padding: 10px;
+  padding: 15px 20px; /* More vertical padding */
   align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Clearer shadow */
 }
 
 .navbar ul {
@@ -26,104 +51,167 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center; /* Center the navigation items */
 }
+
 .navbar ul li {
-  padding: 0 15px;
+  padding: 0 20px; /* Increased spacing between nav items */
 }
+
 .navbar ul li a {
-  color: black;
-  text-decoration: none;
+  color: #333; /* Consistent color for nav links */
+  font-weight: 500; /* Slightly bolder for prominence */
+  transition: color 0.3s ease;
 }
+
+.navbar ul li a:hover {
+  color: #ff1212; /* Highlight on hover */
+}
+
 .user-actions a {
-  color: black;
+  color: #333;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 15px; /* Consistent spacing */
+  transition: color 0.3s ease;
 }
+
+.user-actions a:hover {
+  color: #ff1212;
+}
+
 .submenu {
   display: flex;
   justify-content: center;
-  background: rgb(255, 18, 18);
-  padding: 10px;
+  background: #ff1212; /* Primary brand color for submenu */
+  padding: 12px 20px; /* Adjusted padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .submenu a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 20px; /* Increased spacing */
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.submenu a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle background change on hover */
+  border-radius: 4px;
+}
+
 .banner {
-  background: url("../photos/pexels-pixabay-268533.jpg") no-repeat center
-    center/cover;
-  color: #eee;
+  background: url("../photos/pexels-pixabay-268533.jpg") no-repeat center center/cover;
+  color: #fff; /* White text for contrast on banner */
   display: flex;
+  flex-direction: column; /* Stack content vertically */
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 400px; /* Increased height for impact */
+  padding: 20px; /* Add padding for smaller screens */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); /* Add text shadow for readability */
+}
+
+.banner h1 {
+    font-size: 3em; /* Larger heading for banner */
+    margin-bottom: 15px;
+}
+
+.banner p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin-bottom: 30px;
 }
 
 .info {
-  padding: 40px 20px;
+  padding: 60px 20px; /* More vertical padding */
+  background-color: #ffffff; /* Explicitly white background */
 }
+
 .info h2 {
-  margin: 0 0 10px;
-  padding: 30px;
+  margin-bottom: 25px; /* More spacing below heading */
+  padding: 0; /* Remove redundant padding */
+  font-size: 2.2em; /* Larger heading */
+  color: #333;
 }
-.info-button {
-  background-color: rgb(255, 255, 255);
-  color: black;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 20px;
-  padding: 10px;
-  transition: background-color 0.3s ease;
-  border-color: #ff5733;
-}
-.info-button:hover {
-  background-color: rgba(211, 211, 211, 0.5);
-}
+
 .info .subtitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 20px 0;
+  font-size: 1.2em; /* Slightly larger subtitle */
+  font-weight: normal; /* Less bold, more inviting */
+  margin: 25px 0 40px; /* More spacing around subtitle */
+  color: #555;
 }
+
+.info-button {
+  background-color: #ff1212; /* Stronger brand color */
+  color: #ffffff;
+  border-radius: 8px; /* Slightly more rounded corners */
+  padding: 12px 25px; /* Increased padding */
+  cursor: pointer;
+  font-size: 1.1em; /* Slightly larger font */
+  margin-bottom: 30px; /* More spacing */
+  border: none; /* Remove default border */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.info-button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for better fit */
+  gap: 30px; /* Consistent gap */
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
-  padding: 100px;
+  padding: 50px 20px; /* Consistent padding */
 }
-.info {
-  text-align: center;
-  padding: 20px;
-  background-size: cover;
-  background-position: center;
-  background-color: rgb(255, 255, 255);
+
+.info-grid div {
+  background: #fff;
+  padding: 30px; /* More padding inside grid items */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Clearer shadow for distinction */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-grid div:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-grid h3 {
+  margin-bottom: 15px; /* More spacing below heading */
+  color: #ff1212; /* Consistent brand color */
+  font-size: 1.4em;
+}
+
+.info-grid p {
+    font-size: 0.95em;
+    color: #666;
 }
 
 .offer-section {
   display: flex;
-  gap: 20px;
-  padding: 20px 0;
-  height: 50vh;
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  gap: 30px; /* Consistent gap */
+  padding: 50px 20px; /* Adjusted padding */
   justify-content: center;
-  margin-bottom: 46px;
-}
-.offer-box h3 {
-  color: #ff3333;
+  background-color: #f0f0f0; /* Light grey background for contrast */
 }
 
 .offer-box {
-  flex: 0 0 300px;
-  height: 350px;
+  flex: 0 0 320px; /* Slightly larger fixed width for better content display */
+  background-color: #ffffff; /* White background for individual boxes */
+  height: auto; /* Allow height to adjust to content */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #333;
-  padding: 50px 20px;
+  padding: 30px; /* Increased padding */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -131,180 +219,163 @@ body {
   cursor: pointer;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .offer-box:hover {
-  background-color: rgba(211, 211, 211, 0.5);
-  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  opacity: 1 !important; /* Ensure opacity is 1 on hover */
 }
 
 .offer-box h3 {
-  margin-bottom: 10px;
-  color: rgb(255, 18, 18);
+  margin-bottom: 15px;
+  color: #ff1212;
+  font-size: 1.5em;
 }
 
 .offer-box p,
 .offer-box ul {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.7; /* Improved line height for lists and paragraphs */
+  color: #555;
 }
 
 .offer-box ul {
   text-align: left;
-  padding-left: 20px;
+  padding-left: 25px; /* Increased padding */
 }
 
 .offer-box li {
-  margin-bottom: 5px;
+  margin-bottom: 8px; /* More space between list items */
 }
 
-.offer-description {
-  display: none;
-}
-
-.info-box-button {
-  background-color: #f00;
-  color: #eee;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-.info-box-button:hover {
-  background-color: #d00;
-}
-
-.offer-box:hover ~ .offer-box {
+/* Remove this as it interferes with individual box hover */
+/* .offer-box:hover ~ .offer-box {
   opacity: 0.6;
-}
-
-.offer-box:hover ~ .offer-box,
-.offer-box:hover {
-  background-color: rgba(211, 211, 211, 0.5);
-  opacity: 1;
-}
+} */
 
 .info-box-button {
-  background-color: #f00;
+  background-color: #ff1212;
   color: #fff;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  margin-top: 20px; /* More space above button */
+  transition: background-color 0.3s ease;
 }
 
 .info-box-button:hover {
-  background-color: #d00;
+  background-color: #cc0000;
 }
 
-.info-grid h3 {
-  margin-bottom: 10px;
-  color: rgb(255, 18, 18);
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: left;
-  padding: 50px 20px;
-}
-
-.info-grid div {
-  background: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.info-grid h3 {
-  margin-bottom: 10px;
-  color: rgb(255, 18, 18);
-}
+/* --- Footer Styles --- */
 .footer {
-  background: #f8f8f8;
-  padding: 30px 20px;
+  background: #222; /* Darker background for professional feel */
+  color: #f8f8f8; /* Light text on dark background */
+  padding: 50px 20px; /* More padding */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted minmax for better fit */
+  gap: 30px; /* Consistent gap */
   text-align: left;
 }
+
 .footer h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom: 20px; /* More space below heading */
+  font-size: 1.1em;
+  color: #ffffff; /* White color for footer headings */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+  padding-bottom: 10px;
 }
+
 .footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .footer ul li {
-  margin-bottom: 5px;
+  margin-bottom: 10px; /* More space between list items */
 }
+
 .footer ul li a {
   text-decoration: none;
-  color: #333;
+  color: #bbb; /* Lighter grey for links */
+  transition: color 0.3s ease;
 }
+
+.footer ul li a:hover {
+  color: #fff; /* White on hover */
+}
+
 .footer .social-icons {
   display: flex;
-  gap: 10px;
+  gap: 15px; /* More space between icons */
+  margin-top: 10px;
 }
+
 .footer .social-icons i {
-  font-size: 24px;
-  color: #333;
+  font-size: 28px; /* Larger icons */
+  color: #bbb;
+  transition: color 0.3s ease;
 }
+
+.footer .social-icons i:hover {
+  color: #ff1212; /* Brand color on hover */
+}
+
 .site-footer {
   text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  color: #666;
-  font-size: 14px;
-  border-top: 1px solid #ccc;
-  position: relative;
+  padding: 25px 20px; /* Increased padding */
+  background-color: #111; /* Even darker background for site footer */
+  color: #999;
+  font-size: 0.9em;
+  border-top: 1px solid #333; /* Darker border */
 }
 
 .footer-links {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .footer-links a {
-  color: #ff5733; /* Bright red/orange for links */
+  color: #ff5733; /* Consistent link color */
   text-decoration: none;
-  margin: 0 5px;
+  margin: 0 8px; /* More space between links */
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
+  color: #ff8c00;
 }
 
 .footer-links span {
-  color: #999; /* Divider color */
+  color: #666; /* Slightly darker divider */
 }
 
 .footer-text {
-  margin: 5px 0;
-  color: #666;
-  line-height: 1.6;
+  margin: 8px 0;
+  color: #999;
+  line-height: 1.8;
 }
 
 .footer-text a {
   color: #ff5733;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer-text a:hover {
   text-decoration: underline;
+  color: #ff8c00;
 }
 
 .footer-border {
-  height: 5px;
+  height: 6px; /* Slightly thicker border */
   background: linear-gradient(
     to right,
     #990033,
@@ -314,13 +385,14 @@ body {
     #cc0033,
     #990033
   );
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-top: 20px; /* More space above border */
+  border-radius: 3px; /* Slightly less rounded */
 }
-/* Notifications Page Styles */
+
+/* --- Notifications Page Styles (Adjusted for consistency) --- */
 .notifications-section {
-  padding: 40px 20px;
-  max-width: 800px;
+  padding: 60px 20px; /* More vertical padding */
+  max-width: 900px; /* Slightly wider for better content display */
   margin: 0 auto;
 }
 
@@ -328,12 +400,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* More space below header */
 }
 
 .notifications-header h2 {
   margin: 0;
   color: #333;
+  font-size: 2em; /* Larger heading */
 }
 
 .mark-all-read {
@@ -341,35 +414,46 @@ body {
   border: none;
   color: #ff1212;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Slightly larger font */
   text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.mark-all-read:hover {
+  color: #cc0000;
 }
 
 .notifications-list {
   display: grid;
-  gap: 15px;
+  gap: 20px; /* More space between notification cards */
 }
 
 .notification-card {
   display: flex;
   background: white;
   border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 10px; /* More rounded corners */
+  padding: 25px; /* More padding inside card */
   align-items: flex-start;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Clearer shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
 .notification-card.unread {
-  background: #f8f9fa;
-  border-left: 4px solid #ff1212;
+  background: #fdf3f3; /* Lighter, more subtle red background */
+  border-left: 5px solid #ff1212; /* Thicker, prominent border */
 }
 
 .notification-icon {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Larger icon */
   color: #ff1212;
-  margin-right: 20px;
-  margin-top: 3px;
+  margin-right: 25px; /* More space to the right */
+  margin-top: 5px; /* Align icon better with content */
 }
 
 .notification-content {
@@ -378,17 +462,156 @@ body {
 }
 
 .notification-content h3 {
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0; /* More spacing below heading */
   color: #333;
+  font-size: 1.1em; /* Slightly larger heading */
 }
 
 .notification-content p {
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.95rem; /* Slightly larger paragraph text */
 }
 
 .notification-time {
-  color: #999;
-  font-size: 0.8rem;
+  color: #888; /* Slightly darker time color */
+  font-size: 0.85rem; /* Slightly larger time font */
 }
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+  .navbar ul {
+    justify-content: flex-start; /* Align nav items to start on smaller screens */
+  }
+
+  .navbar ul li {
+    padding: 0 15px; /* Reduce padding for smaller screens */
+  }
+
+  .info-grid, .offer-section, .footer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax for smaller devices */
+    gap: 20px; /* Reduce gap */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-rows: auto auto auto 1fr auto; /* Keep the same grid structure */
+  }
+
+  .navbar {
+    grid-template-columns: 1fr; /* Stack elements on smaller screens */
+    padding: 10px 15px;
+  }
+
+  .navbar ul {
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .navbar ul li {
+    padding: 8px 0; /* Vertical padding for stacked items */
+  }
+
+  .user-actions {
+    margin-top: 10px;
+  }
+
+  .user-actions a {
+    margin: 0 8px; /* Reduce spacing */
+  }
+
+  .submenu {
+    flex-wrap: wrap; /* Allow submenu items to wrap */
+    padding: 10px 15px;
+  }
+
+  .submenu a {
+    margin: 5px 10px; /* Adjust spacing for wrapped items */
+  }
+
+  .banner {
+    height: 250px; /* Shorter banner on small screens */
+  }
+
+  .banner h1 {
+      font-size: 2.2em;
+  }
+
+  .banner p {
+      font-size: 1em;
+  }
+
+  .info {
+    padding: 40px 15px;
+  }
+
+  .info h2 {
+    font-size: 1.8em;
+  }
+
+  .info .subtitle {
+    font-size: 1em;
+  }
+
+  .info-grid, .offer-section, .footer {
+    grid-template-columns: 1fr; /* Single column layout on very small screens */
+    padding: 30px 15px;
+  }
+
+  .offer-box {
+    flex: 0 0 100%; /* Full width for offer boxes */
+  }
+
+  .notifications-section {
+    padding: 30px 15px;
+  }
+
+  .notifications-header {
+    flex-direction: column; /* Stack header elements */
+    align-items: flex-start;
+    margin-bottom: 25px;
+  }
+
+  .notifications-header h2 {
+    margin-bottom: 10px;
+    font-size: 1.6em;
+  }
+
+  .notification-card {
+    flex-direction: column; /* Stack icon and content */
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .notification-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+    .banner h1 {
+        font-size: 1.8em;
+    }
+
+    .info-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer-links a {
+        margin: 0 5px;
+    }
+}
+
+
+/*
+
+*/

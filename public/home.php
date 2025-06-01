@@ -20,6 +20,7 @@ $username = htmlspecialchars($_SESSION['user_name']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Idvault Online - Home</title>
     <link rel="stylesheet" href="../public/assets/css/home.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>

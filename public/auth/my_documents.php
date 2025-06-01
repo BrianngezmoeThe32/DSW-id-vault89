@@ -1,9 +1,9 @@
 <?php
-require_once '../config/database.php'; // Your database connection file
+require_once '../config/database.php';
 
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../auth/login.php');
     exit;
 }
 
@@ -41,10 +41,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Idvault Online - My Documents</title>
     <link rel="stylesheet" href="../assets/css/home.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         .documents-section {
             max-width: 1000px;
@@ -167,29 +164,39 @@ try {
             padding: 40px;
             color: #666;
         }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="navbar">
-            <div class="logo" img="" alt="logo">IdVaut |</div>
+            <div class="logo">IdVault |</div>
             <ul>
                 <li><a href="../organisation/police.html">Police Forum</a></li>
                 <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
-                <li><a href="../organisation/homeAff.html"> Home Affairs</a></li>
+                <li><a href="../organisation/homeAff.html">Home Affairs</a></li>
             </ul>
             <div class="user-actions">
-                <i class="fa-solid fa-magnifying-glass"></i
-                ><a href="../search.html">Search</a>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i
-                ><a href="../FirstPage.html">Log out</a>
+                <i class="fa-solid fa-magnifying-glass"></i><a href="../search.html">Search</a>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i><a href="../logout.php">Log out</a>
             </div>
         </nav>
 
         <div class="submenu">
             <a href="../home.php">Home</a>
             <a href="../status-check.php">Check status</a>
-
         </div>
 
         <main class="banner">
@@ -201,10 +208,10 @@ try {
 
         <section class="documents-section">
             <div class="documents-filter">
-                <button class="filter-btn active">All Documents</button>
-                <button class="filter-btn">Police Forum</button>
-                <button class="filter-btn">Local Certifications</button>
-                <button class="filter-btn">Home Affairs</button>
+                <button class="filter-btn active" data-filter="all">All Documents</button>
+                <button class="filter-btn" data-filter="Police Forum">Police Forum</button>
+                <button class="filter-btn" data-filter="Local Certifications">Local Certifications</button>
+                <button class="filter-btn" data-filter="Home Affairs">Home Affairs</button>
             </div>
 
             <div class="documents-list">
@@ -213,12 +220,12 @@ try {
                 <?php elseif (empty($documents)): ?>
                     <div class="no-documents">
                         <p>You haven't submitted any documents yet.</p>
-                        <a href="affidavit_form.html" class="action-btn download">Submit an Affidavit</a>
-                        <a href="certify_form.html" class="action-btn download">Upload a Document for Certification</a>
+                        <a href="../affidavit_form.php" class="action-btn download">Submit an Affidavit</a>
+                        <a href="../certify_form.php" class="action-btn download">Upload a Document for Certification</a>
                     </div>
                 <?php else: ?>
                     <?php foreach ($documents as $doc): ?>
-                        <div class="document-card">
+                        <div class="document-card" data-category="<?= htmlspecialchars($doc['document_category']) ?>">
                             <div class="document-icon">
                                 <i class="fas fa-file-pdf"></i>
                             </div>
@@ -235,7 +242,7 @@ try {
                             </div>
                             <div class="document-actions">
                                 <?php if ($doc['status'] === 'approved' && !empty($doc['pdf_path'])): ?>
-                                    <a href="download.php?id=<?= $doc['id'] ?>" class="action-btn download">
+                                    <a href="../download.php?id=<?= $doc['id'] ?>" class="action-btn download">
                                         <i class="fas fa-download"></i> Download
                                     </a>
                                     <button class="action-btn share" onclick="shareDocument(<?= $doc['id'] ?>)">
@@ -255,17 +262,6 @@ try {
                 <?php endif; ?>
             </div>
         </section>
-
-        <!-- Footer (same as home page) -->
-        <div class="container">
-            <div class="footer">
-                <!-- Footer content same as home page -->
-            </div>
-        </div>
-
-        <footer class="site-footer">
-            <!-- Footer content same as home page -->
-        </footer>
     </div>
 
     <script>
@@ -275,12 +271,12 @@ try {
                 document.querySelector('.filter-btn.active').classList.remove('active');
                 this.classList.add('active');
                 
-                const filter = this.textContent;
+                const filter = this.getAttribute('data-filter');
                 const cards = document.querySelectorAll('.document-card');
                 
                 cards.forEach(card => {
-                    const category = card.querySelector('p').textContent.split(' | ')[0];
-                    if (filter === 'All Documents' || category === filter) {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
@@ -290,35 +286,33 @@ try {
         });
 
         // Share document functionality
-        // Share document functionality
-function shareDocument(docId) {
-    // In a real implementation, you would make an AJAX call to generate a shareable link
-    fetch('generate_share_link.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ doc_id: docId }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Copy to clipboard
-            navigator.clipboard.writeText(data.share_url).then(() => {
-                alert('Shareable link copied to clipboard!\n\n' + data.share_url);
-            }).catch(err => {
-                alert('Shareable link created:\n\n' + data.share_url + 
-                      '\n\n(Please copy this link manually)');
+        function shareDocument(docId) {
+            fetch('../generate_share_link.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ doc_id: docId }),
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(data.share_url).then(() => {
+                        alert('Shareable link copied to clipboard!\n\n' + data.share_url);
+                    }).catch(err => {
+                        prompt('Copy this shareable link:', data.share_url);
+                    });
+                } else {
+                    alert('Error generating share link: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error generating share link. Please try again.');
             });
-        } else {
-            alert('Error generating share link: ' + data.message);
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error generating share link. Please try again.');
-    });
-}
     </script>
 </body>
 </html>

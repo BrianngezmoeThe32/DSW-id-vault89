@@ -27,14 +27,14 @@ switch ($filter) {
 
 try {
     $stmt = $pdo->prepare("
-        SELECT d.*, u.username, u.email, 
-               a.username as admin_username, a.email as admin_email
-        FROM documents d
-        JOIN users u ON d.user_id = u.id
-        LEFT JOIN users a ON d.admin_id = a.id
-        $where
-        ORDER BY d.submission_date DESC
-    ");
+    SELECT d.*, u.name as username, u.email, 
+           a.name as admin_username, a.email as admin_email
+    FROM documents d
+    JOIN users u ON d.user_id = u.id
+    LEFT JOIN users a ON d.admin_id = a.id
+    $where
+    ORDER BY d.submission_date DESC
+");
     $stmt->execute($params);
     $requests = $stmt->fetchAll();
 } catch (PDOException $e) {
