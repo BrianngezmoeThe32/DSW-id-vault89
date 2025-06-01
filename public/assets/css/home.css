@@ -1373,24 +1373,3 @@ body {
   background: #dc3545;
   color: white;
 }
-.document-upload {
-    margin-bottom: 20px;
-}
-.document-upload label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-.document-upload input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-.document-upload a {
-    color: #0066cc;
-    text-decoration: none;
-}
-.document-upload a:hover {
-    text-decoration: underline;
-}

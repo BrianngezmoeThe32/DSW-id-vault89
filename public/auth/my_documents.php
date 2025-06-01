@@ -174,9 +174,9 @@ try {
         <nav class="navbar">
             <div class="logo" img="" alt="logo">IdVaut |</div>
             <ul>
-                <li><a href="../home.html">Police Forum</a></li>
-                <li><a href="../home.html">Local Certifications</a></li>
-                <li><a href="../home.html"> Home Affairs</a></li>
+                <li><a href="../organisation/police.html">Police Forum</a></li>
+                <li><a href="../organisation/proofRes.html">Local Certifications</a></li>
+                <li><a href="../organisation/homeAff.html"> Home Affairs</a></li>
             </ul>
             <div class="user-actions">
                 <i class="fa-solid fa-magnifying-glass"></i
@@ -187,7 +187,9 @@ try {
         </nav>
 
         <div class="submenu">
-            <a href="../status-check.html">Check status</a>
+            <a href="../home.php">Home</a>
+            <a href="../status-check.php">Check status</a>
+
         </div>
 
         <main class="banner">
@@ -288,10 +290,35 @@ try {
         });
 
         // Share document functionality
-        function shareDocument(docId) {
-            // In a real implementation, this would generate a shareable link
-            alert('Sharing document with ID: ' + docId + '\n\nThis would generate a shareable link in a real implementation.');
+        // Share document functionality
+function shareDocument(docId) {
+    // In a real implementation, you would make an AJAX call to generate a shareable link
+    fetch('generate_share_link.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ doc_id: docId }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Copy to clipboard
+            navigator.clipboard.writeText(data.share_url).then(() => {
+                alert('Shareable link copied to clipboard!\n\n' + data.share_url);
+            }).catch(err => {
+                alert('Shareable link created:\n\n' + data.share_url + 
+                      '\n\n(Please copy this link manually)');
+            });
+        } else {
+            alert('Error generating share link: ' + data.message);
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error generating share link. Please try again.');
+    });
+}
     </script>
 </body>
 </html>

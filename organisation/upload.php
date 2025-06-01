@@ -25,19 +25,22 @@ if (!in_array($_FILES['certificate']['type'], $allowed_types)) {
     exit;
 }
 
-// Create uploads directory if it doesn't exist
-$uploadDir = '../public/uploads/documents/';
-if (!file_exists($uploadDir)) {
-    mkdir($uploadDir, 0755, true);
-}
-$certDir = $uploadDir . 'certifications/';
+// Define consistent upload directory structure
+$baseDir = $_SERVER['DOCUMENT_ROOT'] . '/DSW-website/public/uploads/';
+$certDir = $baseDir . 'certifications/';
+
+// Create directories if they don't exist
 if (!file_exists($certDir)) {
     mkdir($certDir, 0755, true);
 }
 
-$filename = uniqid() . '_' . basename($_FILES['certificate']['name']);
-$target_path = $uploadDir . $filename;
-$relative_path = 'uploads/documents/certifications/' . $filename;
+// Generate unique filename
+$extension = pathinfo($_FILES['certificate']['name'], PATHINFO_EXTENSION);
+$filename = 'cert_' . $user_id . '_' . time() . '.' . $extension;
+$target_path = $certDir . $filename;
+
+// Relative path for database (from public directory)
+$relative_path = 'uploads/certifications/' . $filename;
 
 if (!move_uploaded_file($_FILES['certificate']['tmp_name'], $target_path)) {
     http_response_code(500);
