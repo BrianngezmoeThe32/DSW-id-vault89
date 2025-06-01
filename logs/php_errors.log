@@ -71,3 +71,27 @@
 [15-May-2025 00:11:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\IdvaultFinal\DSW-website\public\auth\register.php on line 86
 [15-May-2025 00:11:15 Europe/Berlin] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'idvault_user'@'localhost' (using password: YES)
 [15-May-2025 00:11:15 Europe/Berlin] [GENERAL ERROR] Database connection error
+[01-Jun-2025 06:13:53 Europe/Berlin] PHP Warning:  require_once(../lib/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 147
+[01-Jun-2025 06:13:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../lib/tcpdf/tcpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\DSW-website\public\handle_document.php:147
+Stack trace:
+#0 C:\xampp\htdocs\DSW-website\public\handle_document.php(61): generateApprovalPdf(Array, 'Bandile')
+#1 {main}
+  thrown in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 147
+[01-Jun-2025 06:15:47 Europe/Berlin] PHP Warning:  require_once(../lib/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 147
+[01-Jun-2025 06:15:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../lib/tcpdf/tcpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\DSW-website\public\handle_document.php:147
+Stack trace:
+#0 C:\xampp\htdocs\DSW-website\public\handle_document.php(61): generateApprovalPdf(Array, 'Bandile')
+#1 {main}
+  thrown in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 147
+[01-Jun-2025 06:21:43 Europe/Berlin] PHP Warning:  require_once(../lib/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 148
+[01-Jun-2025 06:21:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../lib/tcpdf/tcpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\DSW-website\public\handle_document.php:148
+Stack trace:
+#0 C:\xampp\htdocs\DSW-website\public\handle_document.php(62): generateApprovalPdf(Array, 'Bandile')
+#1 {main}
+  thrown in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 148
+[01-Jun-2025 06:25:12 Europe/Berlin] PHP Warning:  require_once(../lib/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 148
+[01-Jun-2025 06:25:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../lib/tcpdf/tcpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\DSW-website\public\handle_document.php:148
+Stack trace:
+#0 C:\xampp\htdocs\DSW-website\public\handle_document.php(62): generateApprovalPdf(Array, 'Bandile')
+#1 {main}
+  thrown in C:\xampp\htdocs\DSW-website\public\handle_document.php on line 148

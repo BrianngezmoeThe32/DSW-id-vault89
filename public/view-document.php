@@ -40,9 +40,8 @@ $document = [
         'time' => ''
     ],
     'certified_data' => [
-        'document_name' => '',
-        'purpose' => '',
-        'notes' => ''
+        'original_filename' => '',
+        'verification_details' => ''
     ]
 ];
 
@@ -79,7 +78,7 @@ try {
                 $document['affidavit_data'] = array_merge($document['affidavit_data'], $affidavitData);
             }
         } elseif ($document['document_type'] === 'certified') {
-            $stmt = $pdo->prepare("SELECT * FROM certified_documents WHERE document_id = ?");
+            $stmt = $pdo->prepare("SELECT original_filename, verification_details FROM certified_documents WHERE document_id = ?");
             $stmt->execute([$docId]);
             $certifiedData = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($certifiedData) {
@@ -281,6 +280,7 @@ if (isset($_GET['file'])) {
             background: #f5f5f5;
             border-radius: 4px;
         }
+        
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 </head>
@@ -372,17 +372,15 @@ if (isset($_GET['file'])) {
                 <div class="detail-section">
                     <h3><i class="fas fa-certificate"></i> Certification Details</h3>
                     <div class="detail-row">
-                        <div class="detail-label">Document Name:</div>
-                        <div class="detail-value"><?= htmlspecialchars($document['certified_data']['document_name']) ?></div>
+                        <div class="detail-label">Original Filename:</div>
+                        <div class="detail-value"><?= htmlspecialchars($document['certified_data']['original_filename']) ?></div>
                     </div>
+                    <?php if (!empty($document['certified_data']['verification_details'])): ?>
                     <div class="detail-row">
-                        <div class="detail-label">Purpose:</div>
-                        <div class="detail-value"><?= htmlspecialchars($document['certified_data']['purpose']) ?></div>
+                        <div class="detail-label">Verification Details:</div>
+                        <div class="detail-value"><?= nl2br(htmlspecialchars($document['certified_data']['verification_details'])) ?></div>
                     </div>
-                    <div class="detail-row">
-                        <div class="detail-label">Additional Notes:</div>
-                        <div class="detail-value"><?= nl2br(htmlspecialchars($document['certified_data']['notes'])) ?></div>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 <?php endif; ?>
                 
