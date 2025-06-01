@@ -578,3 +578,49 @@
 [2025-05-31 12:02:24] Processing financial proof upload
 [2025-05-31 12:02:24] Financial proof uploaded successfully: 683ad3b040c58_financial.pdf
 [2025-05-31 12:02:24] All required fields validated
+[2025-06-01 04:09:39] Starting study permit application processing
+[2025-06-01 04:09:39] Database configuration loaded
+[2025-06-01 04:09:39] POST data received: Array
+(
+    [fullname] => Brain Mongezi Mtswene
+    [id_number] => 0893447387345
+    [dob] => 2003-04-30
+    [nationality] => SA
+    [institution] => UJ
+    [course] => BIT
+    [duration] => 4 YEARS
+    [address] => 4336, Kwaggafontein "A"
+dfkfdkj
+    [contact] => 0765536048
+    [email] => bngezmoe@gmail.com
+)
+
+[2025-06-01 04:09:39] FILES data received: Array
+(
+    [acceptance_letter] => Array
+        (
+            [name] => cert_2_1748738327.pdf
+            [full_path] => cert_2_1748738327.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php4F08.tmp
+            [error] => 0
+            [size] => 4204
+        )
+
+    [financial_proof] => Array
+        (
+            [name] => cert_2_1748738327.pdf
+            [full_path] => cert_2_1748738327.pdf
+            [type] => application/pdf
+            [tmp_name] => C:\xampp\tmp\php4F09.tmp
+            [error] => 0
+            [size] => 4204
+        )
+
+)
+
+[2025-06-01 04:09:39] Processing acceptance letter upload
+[2025-06-01 04:09:39] Acceptance letter uploaded successfully: 683bb66375568_acceptance.pdf
+[2025-06-01 04:09:39] Processing financial proof upload
+[2025-06-01 04:09:39] Financial proof uploaded successfully: 683bb66376b9d_financial.pdf
+[2025-06-01 04:09:39] All required fields validated
